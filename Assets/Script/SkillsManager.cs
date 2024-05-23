@@ -219,6 +219,15 @@ public class SkillsManager : MonoBehaviour
             StartCoroutine(DestroySkillAfterDuration());
         }
     }
+    public void KeydownSkill()
+    {
+        if (keydownCount == 2 && Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 0.014f)
+        {
+            skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
+            skillBox.transform.SetParent(righthandPos.transform);
+            skillLaunched = true;
+        }
+    }
     public void ThrowSkill()
     {
         //스킬나가는 조건에 양손 위치를 받아서 양손의 거리가 특정 거리가 되면 나가게하기
@@ -230,15 +239,6 @@ public class SkillsManager : MonoBehaviour
             skillLaunched = true;
         }
     }
-    public void KeydownSkill()
-    {
-        if (keydownCount == 2 && Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 0.014f)
-        {
-            skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
-            skillBox.transform.SetParent(righthandPos.transform);
-            skillLaunched = true;
-        }
-    }
     private void ShowdownSkill()
     {
         if (showdownCount == 2)
@@ -247,13 +247,12 @@ public class SkillsManager : MonoBehaviour
             skillLaunched = true;
         }
     }
-
-
     public void DestroySkill()
     {
         Destroy(skillBox);
         skillLaunched = false;
     }
+    #region 카운트
 
     private int showdownCount = 0;
     public void ShowdownCountUp()
@@ -273,4 +272,5 @@ public class SkillsManager : MonoBehaviour
     {
         keydownCount--;
     }
+    #endregion
 }
