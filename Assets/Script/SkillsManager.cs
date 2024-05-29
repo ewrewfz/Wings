@@ -235,7 +235,7 @@ public class SkillsManager : MonoBehaviour
         bool righttransform = true;
         if (cool && righttransform && skillLaunched == false)
         {
-            skillBox = Instantiate(SkillSet[2], righthandPos.transform.position, Quaternion.identity);
+            skillBox = Instantiate(SkillSet[2], lefthandPos.transform.position, Quaternion.identity);
             skillLaunched = true;
         }
     }

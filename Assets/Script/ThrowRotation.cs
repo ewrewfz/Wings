@@ -11,10 +11,8 @@ public class ThrowRotation : MonoBehaviour
     private int throwforce;
     private void Start()
     {
-        throwforce = 4;
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindWithTag("Player").transform;
-        handColl = GameObject.FindWithTag("R_handColl").GetComponent<Collider>();
+        handColl = GameObject.FindWithTag("L_Hand").transform.gameObject.GetComponent<Collider>();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -24,17 +22,10 @@ public class ThrowRotation : MonoBehaviour
             StartCoroutine(WaitGravity());
         }        
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other == handColl)
-        {
-            rb.AddForce(player.forward * throwforce + player.up * (throwforce / 2));
-        }
-    }
 
     private IEnumerator WaitGravity()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         rb.useGravity = true;
     }
 

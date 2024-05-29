@@ -1,1 +1,5 @@
-Temp/Work
+warning: in the working copy of 'Assets/Scenes/SampleScene.unity', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Library/Bee/fullprofile.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Library/EditorInstance.json', LF will be replaced by CRLF the next time Git touches it
+error: open("Temp/FSTimeGet-ef4259d22db518a428037c926e33caee"): Permission denied
+fatal: Unable to process path Temp/FSTimeGet-ef4259d22db518a428037c926e33caee

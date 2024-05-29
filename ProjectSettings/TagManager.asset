@@ -10,6 +10,8 @@ TagManager:
   - wall
   - Enemy
   - skill
+  - SamplesInfoPanel
+  - L_Palm
   layers:
   - Default
   - TransparentFX
