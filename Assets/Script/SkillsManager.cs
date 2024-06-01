@@ -109,13 +109,13 @@ public class SkillsManager : MonoBehaviour
         }
         return ultimateSkill;
     }
-
-
-
     private Property RandomProperty()
     {
         return (Property)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Property)).Length);
     }
+
+
+
 
     //========================================================================
     public bool skillLaunched = false;
