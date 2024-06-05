@@ -119,6 +119,8 @@ public class SkillsManager : MonoBehaviour
 
     //========================================================================
     public bool skillLaunched = false;
+    public bool PreSkillLaunched = false;
+
     private GameObject skillBox;
     private GameObject righthandPos;
     private GameObject lefthandPos;
@@ -228,15 +230,33 @@ public class SkillsManager : MonoBehaviour
             skillLaunched = true;
         }
     }
+    public void PreThrowSkill()
+    {
+        //날리기 전 사전 손동작 스킬
+        bool cool = true;
+        bool righttransform = true;
+        if (cool && righttransform && skillLaunched == false)
+        {
+            Debug.Log("사전손동작 성공");
+            skillBox = Instantiate(SkillSet[2], righthandPos.transform.position + (righthandPos.transform.right * -0.03f) + (righthandPos.transform.forward * -0.1f), Quaternion.identity);
+            skillBox.transform.SetParent(righthandPos.transform);
+            skillLaunched = true;
+            PreSkillLaunched = true;
+        }
+    }
     public void ThrowSkill()
     {
         //스킬나가는 조건에 양손 위치를 받아서 양손의 거리가 특정 거리가 되면 나가게하기
         bool cool = true;
         bool righttransform = true;
-        if (cool && righttransform && skillLaunched == false)
+        RaycastHit hit = crosshairray.hit;
+        if (cool && righttransform && PreSkillLaunched == true)
         {
-            skillBox = Instantiate(SkillSet[2], lefthandPos.transform.position, Quaternion.identity);
+            skillBox.transform.SetParent(null);
+            Rigidbody rb = skillBox.gameObject.GetComponent<Rigidbody>();
+            rb.AddForce(hit.point * skillForce);
             skillLaunched = true;
+            PreSkillLaunched = false;
         }
     }
     private void ShowdownSkill()

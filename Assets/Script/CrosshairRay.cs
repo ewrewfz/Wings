@@ -9,13 +9,15 @@ public class CrosshairRay : MonoBehaviour
     [SerializeField] private GameObject crosshair;
     private SpriteRenderer crosshairColor;
     public float skillDistance;
+    private GameObject cross;
     //private LineRenderer line;
 
     private void Start()
     {
+        cross = Instantiate(crosshair);
         skillDistance = 50f;
         //line = GetComponent<LineRenderer>();
-        crosshairColor = crosshair.GetComponent<SpriteRenderer>();
+        crosshairColor = cross.GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -28,14 +30,14 @@ public class CrosshairRay : MonoBehaviour
         if (Physics.Raycast(hmdWorld, transform.forward, out hit, skillDistance))
         {
             SetCrosshairRotation(hit);
-            crosshair.transform.position = hit.point;
+            cross.transform.position = hit.point;
             //line.SetPosition(1, transform.InverseTransformPoint(hit.point));
             crosshairColor.color = Color.green;
         }
         else
         {
             hit.point = hmdWorld + transform.forward * skillDistance;
-            crosshair.transform.position = hit.point;
+            cross.transform.position = hit.point;
             SetCrosshairRotation(hit);
             crosshairColor.color = Color.white;
         }
@@ -46,11 +48,11 @@ public class CrosshairRay : MonoBehaviour
         //바닥, 벽일경우
         if (_hit.transform.gameObject.CompareTag("wall"))
         {
-            crosshair.transform.rotation = Quaternion.LookRotation(_hit.normal);
+            cross.transform.rotation = Quaternion.LookRotation(_hit.normal);
         }
         else if (_hit.transform.gameObject.CompareTag("Enemy"))
         {
-            crosshair.transform.rotation = Quaternion.LookRotation(_hit.point - hmdWorld);
+            cross.transform.rotation = Quaternion.LookRotation(_hit.point - hmdWorld);
         }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - skill
   - SamplesInfoPanel
   - L_Palm
+  - crosshair
   layers:
   - Default
   - TransparentFX

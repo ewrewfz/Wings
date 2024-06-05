@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class ThrowSkillEffect : MonoBehaviour
 {
-    public SkillsManager skillManager;
-    public ParticleSystem[] particle = new ParticleSystem[2]; // 0번이 시작이펙트, 1번이 터질때 이펙트
+    public GameObject prethrowskill;
+    public GameObject throwskill;
+    private Rigidbody rb;
+
+    private CrosshairRay crosshairray;
+
     private void Start()
     {
-        //intro 이펙트
-        particle[0].Play();
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        print("무언가에 닿음");
-        if (other.gameObject.CompareTag("wall"))
-        {
-            print("바닥에 닿음");
-            particle[1].Play();
-            StartCoroutine(WaitDestroy(particle[1]));
-        }
+        crosshairray = GameObject.FindWithTag("crosshair").gameObject.GetComponent<CrosshairRay>();
+        rb = GetComponent<Rigidbody>();
+        prethrowskill.SetActive(true);
+        throwskill.SetActive(false);
     }
 
-    private IEnumerator WaitDestroy(ParticleSystem _effect)
+    public void TowardTarget()
     {
-        yield return new WaitForSeconds(_effect.time);
-        Destroy(gameObject);
-        skillManager.skillLaunched = false;
+        RaycastHit hit = crosshairray.hit;
+        Vector3 towardDirect = hit.point - transform.position;
+        towardDirect.y = 0;
+        rb.AddForce(towardDirect * 10f);
+        StartCoroutine(ChangeEffect());
+    }
+    private IEnumerator ChangeEffect()
+    {
+        yield return new WaitForSeconds(3f);
+        prethrowskill.SetActive(false);
+        throwskill.SetActive(true);
+        rb.velocity = Vector3.zero;
     }
 }
