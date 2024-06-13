@@ -252,13 +252,35 @@ public class SkillsManager : MonoBehaviour
         RaycastHit hit = crosshairray.hit;
         if (cool && righttransform && PreSkillLaunched == true)
         {
+            Vector3 shotPos = righthandPos.transform.position + (righthandPos.transform.right * -0.03f) + (righthandPos.transform.forward * -0.1f);
             skillBox.transform.SetParent(null);
             Rigidbody rb = skillBox.gameObject.GetComponent<Rigidbody>();
-            rb.AddForce(hit.point * skillForce);
+            Vector3 targetPos = (hit.point - shotPos);
+
+            targetPos.y = 0;
+            skillBox.transform.rotation = Quaternion.identity;
+            rb.AddForce(targetPos * skillForce);
             skillLaunched = true;
             PreSkillLaunched = false;
+            ChangeEffect();
         }
     }
+
+    public void ThrowExplosion()
+    {
+        if (skillBox.GetComponent<ThrowSkillEffect>() == null)
+        {
+            return;
+        }
+        skillBox.GetComponent<ThrowSkillEffect>().OnExplosion();
+    }
+    //================
+    private void ChangeEffect()
+    {
+        ThrowSkillEffect _throwskill = skillBox.GetComponent<ThrowSkillEffect>();
+        _throwskill.TestCor();
+    }
+    //===============
     private void ShowdownSkill()
     {
         if (showdownCount == 2)
