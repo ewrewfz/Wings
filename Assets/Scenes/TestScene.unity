@@ -2850,12 +2850,6 @@ MonoBehaviour:
     - _mode: 0
       _feature: 6
       _state: 18
-    - _mode: 0
-      _feature: 5
-      _state: 17
-    - _mode: 0
-      _feature: 4
-      _state: 14
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
@@ -2897,6 +2891,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1683565206}
         m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
         m_MethodName: KeydownCountUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1683565206}
+        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
+        m_MethodName: UseKeydownSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2949,7 +2955,7 @@ MonoBehaviour:
   _hand: {fileID: 1282106029}
   _fingerFeatureStateProvider: {fileID: 700344016}
   _shapes:
-  - {fileID: 11400000, guid: b0f039428fdcbf848935698c92413fbc, type: 2}
+  - {fileID: 11400000, guid: d03990bea704f5a4aac7e37517d718e8, type: 2}
 --- !u!114 &1282106029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3434,7 +3440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hmdParent: {x: 0, y: 0, z: 0}
-  crosshair: {fileID: 4983212411272155431, guid: 0cab93b847385094eb78a7d6b44e033f,
+  crosshair: {fileID: 6711179295065893594, guid: 1b7a301ab1828ae48b3c73fb4c022e53,
     type: 3}
   skillDistance: 0
   skillsManager: {fileID: 1683565206}
@@ -4436,7 +4442,7 @@ MonoBehaviour:
   keydownSkillPrefab:
   - {fileID: 244288146580007346, guid: f2415ebfa00f6bf46b2b246b5a4fc242, type: 3}
   - {fileID: 7647743207130228644, guid: aedd4767f0fb8e94dab7aaedd9b5466c, type: 3}
-  - {fileID: 6259864194654798086, guid: fe8bbbda1608da5439fb0e8ad936da05, type: 3}
+  - {fileID: 361624405163453821, guid: 75c44b92b69b09240b7b82fc60426a9a, type: 3}
   - {fileID: 5142810691775728174, guid: 7e07907e394496741b3ea6228019a76f, type: 3}
   throwSkillPrefab:
   - {fileID: 1304277438375901949, guid: 523d4d6cdc12e46489cdf14ac7e75ee2, type: 3}
@@ -4461,6 +4467,8 @@ MonoBehaviour:
   ThreeGo: 3
   dashDistance: 6
   handDis: 1.05
+  time_holding: 5
+  time_step: 0.2
 --- !u!1 &1730097335
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,12 +4534,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _whenUnselected:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 1683565206}
         m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: KeydownCountDown
+        m_MethodName: UseKeydownSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4541,9 +4546,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _whenUnselected:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 1683565206}
         m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: DestroySkill
+        m_MethodName: KeydownCountDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4581,7 +4589,7 @@ MonoBehaviour:
   _hand: {fileID: 1730097340}
   _fingerFeatureStateProvider: {fileID: 1225314249}
   _shapes:
-  - {fileID: 11400000, guid: b0f039428fdcbf848935698c92413fbc, type: 2}
+  - {fileID: 11400000, guid: d03990bea704f5a4aac7e37517d718e8, type: 2}
 --- !u!114 &1730097340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4614,12 +4622,6 @@ MonoBehaviour:
     - _mode: 0
       _feature: 6
       _state: 18
-    - _mode: 0
-      _feature: 5
-      _state: 17
-    - _mode: 0
-      _feature: 4
-      _state: 14
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
@@ -4925,7 +4927,7 @@ Transform:
   m_GameObject: {fileID: 1824500766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.03, y: 2, z: -1.8}
+  m_LocalPosition: {x: -1.03, y: 2, z: -2.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

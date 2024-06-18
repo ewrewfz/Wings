@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5012411352861125816}
   - component: {fileID: 5162473773864501028}
   - component: {fileID: 2669876168604168143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ice_start_ora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 878693654266230052}
   - component: {fileID: 7595985782496962674}
   - component: {fileID: 7921702724144354980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_wind_ultimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9840,7 +9840,7 @@ GameObject:
   - component: {fileID: 8068800912710902659}
   - component: {fileID: 7986283536062724656}
   - component: {fileID: 2614354564416230830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14746,7 +14746,7 @@ GameObject:
   - component: {fileID: 5326389606583729413}
   - component: {fileID: 2544289536341270213}
   - component: {fileID: 8304501019286364570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19670,7 +19670,7 @@ GameObject:
   - component: {fileID: 4804647837894830622}
   - component: {fileID: 4668445791718462508}
   - component: {fileID: 2505883705405894824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

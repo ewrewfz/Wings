@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4182632370170126283}
   - component: {fileID: 5242813037300462486}
   - component: {fileID: 178270487065194723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4936,7 +4936,7 @@ GameObject:
   - component: {fileID: 6015459211026858016}
   - component: {fileID: 6828946232064008247}
   - component: {fileID: 6284540657927911256}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9846,7 +9846,7 @@ GameObject:
   - component: {fileID: 8207097825166664614}
   - component: {fileID: 1830422964220858372}
   - component: {fileID: 3574389180720721923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_wind_keydown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

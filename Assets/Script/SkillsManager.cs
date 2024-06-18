@@ -57,22 +57,26 @@ public class SkillsManager : MonoBehaviour
         return singleSkill;
     }
 
-    private GameObject KeydownSkill(Property property)
+    private GameObject KeydownSkill(Property property) // 스킬배치를 받고 keydown 에 할당
     {
         GameObject keydownSkill = null;
         switch (property)
         {
             case Property.Fire:
                 keydownSkill = keydownSkillPrefab[0];
+                Ac_KeydownSkill += Keydown_Fire;
                 break;
             case Property.Ice:
                 keydownSkill = keydownSkillPrefab[1];
+                Ac_KeydownSkill += Keydown_Ice;
                 break;
             case Property.Lightning:
                 keydownSkill = keydownSkillPrefab[2];
+                Ac_KeydownSkill += Keydown_Ele;
                 break;
             case Property.None:
                 keydownSkill = keydownSkillPrefab[3];
+                Ac_KeydownSkill += Keydown_Wind;
                 break;
         }
         return keydownSkill;
@@ -144,10 +148,10 @@ public class SkillsManager : MonoBehaviour
         {
             ShowdownSkill();
         }
-        if (keydownCount >= 1 && skillLaunched == false)
-        {
-            KeydownSkill();
-        }
+        //if (keydownCount >= 1 && skillLaunched == false)
+        //{
+        //    //KeydownSkill();
+        //}
     }
     void LaunchSkill(Vector3 spawnPos)
     {
@@ -178,6 +182,7 @@ public class SkillsManager : MonoBehaviour
         //StartCoroutine(DestroySkillAfterDuration());
     }
     //=========== GoStop=================
+    #region Dash
 
     public Player player;
     private Transform handPos;
@@ -251,8 +256,9 @@ public class SkillsManager : MonoBehaviour
 
 
 
-
+    #endregion
     //===================================
+
 
     IEnumerator DestroySkillAfterDuration()
     {
@@ -298,15 +304,153 @@ public class SkillsManager : MonoBehaviour
             StartCoroutine(DestroySkillAfterDuration());
         }
     }
-    public void KeydownSkill()
+
+    //public void KeydownSkill()
+    //{
+    //    if (keydownCount == 2 && Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 0.014f)
+    //    {
+    //        skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
+    //        skillBox.transform.SetParent(righthandPos.transform);
+    //        skillLaunched = true;
+    //    }
+    //}
+
+    //================================
+
+    //키다운을 이벤트 액션으로 처리
+    private event Action Ac_KeydownSkill;
+    public void UseKeydownSkill()
     {
-        if (keydownCount == 2 && Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 0.014f)
+        Ac_KeydownSkill();
+    }
+
+    [SerializeField] private float time_holding = 5f; //유지력
+    [SerializeField] private float time_step = 0.2f; //아이스용 생성간격
+    private void Keydown_Fire()
+    {
+        print("불");
+        if (keydownCount == 2 && skillLaunched == false &&
+            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
         {
-            skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
-            skillBox.transform.SetParent(righthandPos.transform);
             skillLaunched = true;
+            StartCoroutine(FireMake());
+        }        
+    }
+    private IEnumerator FireMake()
+    {
+        //if (isKeydownSkill != null) yield break; //재동작하는걸 막음(스킬런치가 이미 막고있음)
+        float _t = 0;
+        print("불2");
+        skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
+        skillBox.transform.SetParent(righthandPos.transform);
+        while (_t < time_holding)
+        {
+            _t += Time.deltaTime;
+            yield return null;
+            if (keydownCount < 2)
+            {
+                skillLaunched = false;
+                Destroy(skillBox);
+                yield break; //손이 풀리면 코루틴 탈출
+            }
+        }
+        skillLaunched = false;
+        Destroy(skillBox);
+    }
+    private void Keydown_Ice() //시전시 코루틴으로 얼음을 hit.point에 생성
+    {
+        print("얼음");
+        if (keydownCount == 2 && skillLaunched == false &&
+            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+        {
+            skillLaunched = true;
+            StartCoroutine(IceMake());
         }
     }
+    private IEnumerator IceMake()
+    {
+        print("얼음2");
+        //if (isKeydownSkill != null) yield break;
+        float _t = 0;
+        while (_t < time_holding) //5초간 지속
+        {
+            RaycastHit hit = crosshairray.hit;
+            _t += Time.deltaTime;
+            skillBox = Instantiate(SkillSet[1], hit.point, Quaternion.identity);
+            Destroy(skillBox, 1f);
+            yield return new WaitForSeconds(time_step);
+            if (keydownCount < 2)
+            {
+                skillLaunched = false;
+                Destroy(skillBox);
+                yield break; //손이 풀리면 코루틴 탈출
+            }
+        }
+        skillLaunched = false;
+        Destroy(skillBox);
+    }
+    private void Keydown_Ele()
+    {
+        print("번개");
+        if (keydownCount == 2 && skillLaunched == false &&
+            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+        {
+            skillLaunched = true;
+            StartCoroutine(EleMake());
+        }
+    }
+    private IEnumerator EleMake()
+    {
+        float _t = 0;
+        print("번개3");
+        skillBox = Instantiate(SkillSet[1], player.transform.position, Quaternion.identity);
+        skillBox.transform.SetParent(player.transform);
+        while (_t < time_holding) //5초간 지속
+        {
+            _t += Time.deltaTime;
+            
+            yield return null;
+            if (keydownCount < 2)
+            {
+                skillLaunched = false;
+                Destroy(skillBox);
+                yield break; //손이 풀리면 코루틴 탈출
+            }
+        }
+        skillLaunched = false;
+        Destroy(skillBox);
+    }
+    private void Keydown_Wind()
+    {
+        print("바람");
+        if (keydownCount == 2 && skillLaunched == false &&
+            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+        {
+            skillLaunched = true;
+            StartCoroutine(WindMake());
+        }
+    }
+    private IEnumerator WindMake()
+    {
+        float _t = 0;
+        print("바람2");
+        skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
+        skillBox.transform.SetParent(righthandPos.transform);
+        while (_t < time_holding) //5초간 지속
+        {
+            _t += Time.deltaTime;
+            yield return null;
+            if (keydownCount < 2)
+            {
+                skillLaunched = false;
+                Destroy(skillBox);
+                yield break; //손이 풀리면 코루틴 탈출
+            }
+        }
+        skillLaunched = false;
+        Destroy(skillBox);
+    }
+    //================================
     public void PreThrowSkill()
     {
         //날리기 전 사전 손동작 스킬

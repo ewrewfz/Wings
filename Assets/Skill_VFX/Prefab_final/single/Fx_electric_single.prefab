@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6225599419407450820}
   - component: {fileID: 7717355282820722689}
   - component: {fileID: 4927064658536319609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fx_electric_single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4915,7 +4915,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4959,7 +4959,7 @@ GameObject:
   - component: {fileID: 7063233380846855472}
   - component: {fileID: 4515128932599962707}
   - component: {fileID: 4707871048149958073}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}

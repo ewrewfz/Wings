@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2843525532460881628}
   - component: {fileID: 5492788081453277511}
   - component: {fileID: 7187183789276776526}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,7 +4917,7 @@ GameObject:
   - component: {fileID: 8824800100118840842}
   - component: {fileID: 6733535480869722278}
   - component: {fileID: 6948050633044062476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9814,7 +9814,7 @@ GameObject:
   - component: {fileID: 6946038118634597419}
   - component: {fileID: 5143364664995443335}
   - component: {fileID: 8826733165971708717}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14711,7 +14711,7 @@ GameObject:
   - component: {fileID: 7313514289528173118}
   - component: {fileID: 4790559277750234258}
   - component: {fileID: 9179815626791667000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sphere3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19608,7 +19608,7 @@ GameObject:
   - component: {fileID: 6133510094491039909}
   - component: {fileID: 150556060931350149}
   - component: {fileID: 3742605482020166928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fx_electric_keydown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24519,7 +24519,7 @@ GameObject:
   - component: {fileID: 3317152576788654262}
   - component: {fileID: 652259464511141402}
   - component: {fileID: 3752474185510477744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

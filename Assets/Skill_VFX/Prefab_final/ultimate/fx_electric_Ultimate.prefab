@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2836601629466953447}
   - component: {fileID: 4929150365769130332}
   - component: {fileID: 2207112799937071976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 6165592385957095562}
   - component: {fileID: 5543985111323943675}
   - component: {fileID: 3596633640754181810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9850,7 +9850,7 @@ GameObject:
   - component: {fileID: 7945384589866470320}
   - component: {fileID: 662928264566169277}
   - component: {fileID: 8813905664832232304}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14747,7 +14747,7 @@ GameObject:
   - component: {fileID: 7608218275190854867}
   - component: {fileID: 2529884476576868501}
   - component: {fileID: 5359511590588665526}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_electric_Ultimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19676,7 +19676,7 @@ GameObject:
   - component: {fileID: 7445509033283474362}
   - component: {fileID: 367232730417043261}
   - component: {fileID: 528363812781325381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: around (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24591,7 +24591,7 @@ GameObject:
   - component: {fileID: 3593316382485423644}
   - component: {fileID: 4132120462908914996}
   - component: {fileID: 5287408126923405531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

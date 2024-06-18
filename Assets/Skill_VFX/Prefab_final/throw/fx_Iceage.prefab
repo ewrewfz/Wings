@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1780354078703079655}
   - component: {fileID: 553683238267112123}
   - component: {fileID: 1066818991764793326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4926,7 +4926,7 @@ GameObject:
   - component: {fileID: 1264333504967287241}
   - component: {fileID: 6078274827225169449}
   - component: {fileID: 2032341556682364102}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9899,7 +9899,7 @@ GameObject:
   - component: {fileID: 2629340765378435662}
   - component: {fileID: 932185855701113343}
   - component: {fileID: 530823376323571715}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14796,7 +14796,7 @@ GameObject:
   - component: {fileID: 872338647374948609}
   - component: {fileID: 6750916361068113480}
   - component: {fileID: 5531289201610065473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19739,7 +19739,7 @@ GameObject:
   - component: {fileID: 8264030011415021914}
   - component: {fileID: 1193984014826119072}
   - component: {fileID: 2326199845864086181}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_Iceage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24709,7 +24709,7 @@ GameObject:
   - component: {fileID: 2899292449954958935}
   - component: {fileID: 3904151287181884407}
   - component: {fileID: 6337268298056902767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29607,7 +29607,7 @@ GameObject:
   - component: {fileID: 1704826168314719036}
   - component: {fileID: 8296928083628526474}
   - component: {fileID: 6795793379963923308}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

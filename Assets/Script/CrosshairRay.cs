@@ -11,13 +11,14 @@ public class CrosshairRay : MonoBehaviour
     private SpriteRenderer crosshairColor;
     public float skillDistance;
     private GameObject cross;
-
+    private int layerMask;
     public SkillsManager skillsManager;
     private bool onCrosshair = false;
     //private LineRenderer line;
 
     private void Start()
     {
+        layerMask = (-1) - (1 << LayerMask.NameToLayer("Skill")); //스킬은 통과
         cross = Instantiate(crosshair);
         skillDistance = 50f;
         //line = GetComponent<LineRenderer>();
@@ -52,19 +53,19 @@ public class CrosshairRay : MonoBehaviour
     {
         hmdWorld = hmdParent + transform.position;
         //Rayast(광선의 시작 지점, 광선이 뻗어나갈 방향 , 충돌 정보(out hit), 광선의 사정거리)
-        if (Physics.Raycast(hmdWorld, transform.forward, out hit, skillDistance))
+        if (Physics.Raycast(hmdWorld, transform.forward, out hit, skillDistance, layerMask))
         {
             SetCrosshairRotation(hit);
             cross.transform.position = hit.point;
             //line.SetPosition(1, transform.InverseTransformPoint(hit.point));
-            crosshairColor.color = Color.green;
+            //crosshairColor.color = Color.green;
         }
         else
         {
             hit.point = hmdWorld + transform.forward * skillDistance;
             cross.transform.position = hit.point;
             SetCrosshairRotation(hit);
-            crosshairColor.color = Color.white;
+            //crosshairColor.color = Color.white;
         }
     }
 

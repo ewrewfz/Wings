@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8140967479633882943}
   - component: {fileID: 9216615841201556251}
   - component: {fileID: 4208194691559603938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 7353747312857093445}
   - component: {fileID: 2507176006466362666}
   - component: {fileID: 6835137990929383914}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WindThrowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4989,7 +4989,7 @@ GameObject:
   - component: {fileID: 380530672003011399}
   - component: {fileID: 3589375976598305535}
   - component: {fileID: 5250797982812835269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_windage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9934,7 +9934,7 @@ GameObject:
   - component: {fileID: 1880557141599026822}
   - component: {fileID: 7397357124575972883}
   - component: {fileID: 8458878507175221323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14934,7 +14934,7 @@ GameObject:
   - component: {fileID: 4941099111018228100}
   - component: {fileID: 7009023045746509708}
   - component: {fileID: 8502889565667357455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19912,7 +19912,7 @@ GameObject:
   - component: {fileID: 8517852342436773086}
   - component: {fileID: 5687696800501227065}
   - component: {fileID: 2703423457611182061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24827,7 +24827,7 @@ GameObject:
   - component: {fileID: 866699952934482767}
   - component: {fileID: 2506350151240879486}
   - component: {fileID: 6548151019823312695}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29766,6 +29766,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7353747312857093445}
     m_Modifications:
+    - target: {fileID: 587879332327633242, guid: db7566696331ece458346d37457cfc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1797201271128008493, guid: db7566696331ece458346d37457cfc07,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -29876,6 +29881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fx_vfx_windball
       objectReference: {fileID: 0}
+    - target: {fileID: 3186662409334955046, guid: db7566696331ece458346d37457cfc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3965939291400934190, guid: db7566696331ece458346d37457cfc07,
         type: 3}
       propertyPath: looping
@@ -29910,6 +29920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.44010326
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949244415138014821, guid: db7566696331ece458346d37457cfc07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30010,6 +30025,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fx_wind_explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870275739609566295, guid: 79d0966042def6e4f911948cc9633c1e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5298965985987450671, guid: 79d0966042def6e4f911948cc9633c1e,
         type: 3}

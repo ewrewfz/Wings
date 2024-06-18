@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6157078663225249285}
   - component: {fileID: 3694126953175462855}
   - component: {fileID: 8664577665008707550}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fx_fire_keydown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 6440740294618171785}
   - component: {fileID: 4759356667880413718}
   - component: {fileID: 1519069656561437799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9834,7 +9834,7 @@ GameObject:
   - component: {fileID: 2071271912772263248}
   - component: {fileID: 967755217200781381}
   - component: {fileID: 8613469956548300982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}

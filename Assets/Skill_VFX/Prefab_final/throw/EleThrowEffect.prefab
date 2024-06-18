@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4537238706567498562}
   - component: {fileID: 8330003120683762453}
   - component: {fileID: 4080725048271845442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 537570733934622446}
   - component: {fileID: 8854845678083418822}
   - component: {fileID: 459765814253832822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9851,7 +9851,7 @@ GameObject:
   - component: {fileID: 3231361358766061305}
   - component: {fileID: 6733049831627631137}
   - component: {fileID: 7011948347677972593}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_electricage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14797,7 +14797,7 @@ GameObject:
   - component: {fileID: 5394194067262431389}
   - component: {fileID: 5504225071640154800}
   - component: {fileID: 1452578998463865975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19776,7 +19776,7 @@ GameObject:
   - component: {fileID: 4655932728252514852}
   - component: {fileID: 56072023942263824}
   - component: {fileID: 4994333326148018013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_electricage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24741,7 +24741,7 @@ GameObject:
   - component: {fileID: 397001237048814813}
   - component: {fileID: 7451921446585873593}
   - component: {fileID: 5457553240411495407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EleThrowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24821,7 +24821,7 @@ GameObject:
   - component: {fileID: 6255974403028626211}
   - component: {fileID: 2360133233307237019}
   - component: {fileID: 732312186874805336}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29799,7 +29799,7 @@ GameObject:
   - component: {fileID: 2009542811181618642}
   - component: {fileID: 3390696515352694519}
   - component: {fileID: 1983499328814189958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34786,6 +34786,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fx_electric_explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 3589826262074769466, guid: eb4e8c5c5cd2d3542a6cd2df4e2a5a0a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34855,6 +34860,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fx_vfx_electricball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280304388801435250, guid: 98394f366f0d91149a47da55fa6d143e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289062940218007437, guid: 98394f366f0d91149a47da55fa6d143e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5204454894033993428, guid: 98394f366f0d91149a47da55fa6d143e,
         type: 3}
@@ -34930,6 +34945,11 @@ PrefabInstance:
         type: 3}
       propertyPath: looping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849663102837195016, guid: 98394f366f0d91149a47da55fa6d143e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
