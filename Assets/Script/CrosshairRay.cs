@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class CrosshairRay : MonoBehaviour
     private SpriteRenderer crosshairColor;
     public float skillDistance;
     private GameObject cross;
+
+    public SkillsManager skillsManager;
+    private bool onCrosshair = false;
     //private LineRenderer line;
 
     private void Start()
@@ -18,11 +22,32 @@ public class CrosshairRay : MonoBehaviour
         skillDistance = 50f;
         //line = GetComponent<LineRenderer>();
         crosshairColor = cross.GetComponent<SpriteRenderer>();
+        //cross.gameObject.SetActive(false);
     }
+    //public void StartShot()
+    //{
+    //    StartCoroutine(ShotUpdate());
+    //}
+    //private IEnumerator ShotUpdate()
+    //{
+    //    onCrosshair = true;
+    //    cross.gameObject.SetActive(true);
+    //    while (onCrosshair)
+    //    {
+    //        Shot();
+    //        yield return null;
+    //    }
+    //}
+
     private void Update()
     {
         Shot();
     }
+    //public void StopShot()
+    //{
+    //    onCrosshair = false;
+    //    cross.gameObject.SetActive(false);
+    //}
     private void Shot()
     {
         hmdWorld = hmdParent + transform.position;

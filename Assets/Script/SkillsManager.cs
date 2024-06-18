@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SkillsManager : MonoBehaviour
 {
@@ -175,7 +177,82 @@ public class SkillsManager : MonoBehaviour
         // 스킬 사용 시간이 지난 후 스킬을 파괴하는 코루틴을 시작합니다.
         //StartCoroutine(DestroySkillAfterDuration());
     }
+    //=========== GoStop=================
 
+    public Player player;
+    private Transform handPos;
+    private Vector3 targetPos;
+    [SerializeField] private int ThreeGo = 3;
+    [SerializeField] private int dashDistance = 6;
+    public int threeGo
+    {
+        get { return ThreeGo; }
+        set 
+        { 
+            if (ThreeGo > 3)
+            {
+                ThreeGo = 3;
+            }
+            else if (ThreeGo <= 0)
+            {
+                ThreeGo = 0;
+            }
+            ThreeGo = value; 
+        }
+    }
+    public float handDis = 0.02f;
+    public void UseThreeGo()
+    {
+        if ((lefthandPos.transform.position - player.transform.position).magnitude < handDis)
+        {
+            return;
+        }
+        if (skillLaunched == false && threeGo >= 1)
+        {
+            skillLaunched = true;
+            targetPos = player.transform.position;
+            threeGo--;
+            GetTargetPos();
+            StartCoroutine(GoDash());
+        }
+    }
+
+   
+    public void GetTargetPos()
+    {
+        RaycastHit hit = crosshairray.hit;
+        Vector3 _temphit = new Vector3(hit.point.x, 0, hit.point.z);
+        Vector3 _tempplayer = new Vector3(player.transform.position.x, 0, player.transform.position.z);
+
+        if (dashDistance > (_temphit - _tempplayer).magnitude)
+        {
+            targetPos = _temphit - _tempplayer;
+        }
+        else
+        {
+            Vector3 _tempVec3 = (_temphit - _tempplayer).normalized * dashDistance;
+            targetPos = _tempVec3;
+        }
+    }
+    public IEnumerator GoDash()
+    {
+        float _t = 0f;
+        Vector3 _origin = player.transform.position;
+        while (_t <= 0.1f)
+        {
+            _t += Time.deltaTime;
+            player.transform.position = new Vector3(_origin.x + targetPos.x * (_t / 0.1f), player.transform.position.y, _origin.z + targetPos.z * (_t / 0.1f));
+            yield return null;
+        }
+        player.transform.position = new Vector3(_origin.x + targetPos.x, player.transform.position.y, _origin.z + targetPos.z);
+        skillLaunched = false;
+    }
+
+
+
+
+
+    //===================================
 
     IEnumerator DestroySkillAfterDuration()
     {
@@ -273,6 +350,8 @@ public class SkillsManager : MonoBehaviour
             return;
         }
         skillBox.GetComponent<ThrowSkillEffect>().OnExplosion();
+        skillLaunched = false;
+        Destroy(skillBox, 1.5f);
     }
     //================
     private void ChangeEffect()
