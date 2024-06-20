@@ -31,6 +31,8 @@ public class SkillsManager : MonoBehaviour
 
         righthandPos = GameObject.FindWithTag("R_Hand").transform.gameObject;
         lefthandPos = GameObject.FindWithTag("L_Hand").transform.gameObject;
+        //player = GameObject.FindWithTag("Player").transform.gameObject;
+        //characterColl = player.GetComponent<Collider>();
     }
 
     private GameObject SingleSkill(Property property)
@@ -105,13 +107,17 @@ public class SkillsManager : MonoBehaviour
         switch (property)
         {
             case Property.Fire:
-                ultimateSkill = ultimateSkillPrefab[0]; break;
+                ultimateSkill = ultimateSkillPrefab[0];
+                Ac_ShowdownSkill += Showdown_Fire; break;
             case Property.Ice:
-                ultimateSkill = ultimateSkillPrefab[1]; break;
+                ultimateSkill = ultimateSkillPrefab[1];
+                Ac_ShowdownSkill += Showdown_Ice; break;
             case Property.Lightning:
-                ultimateSkill = ultimateSkillPrefab[2]; break;
+                ultimateSkill = ultimateSkillPrefab[2];
+                Ac_ShowdownSkill += Showdown_Ele; break;
             case Property.None:
-                ultimateSkill = ultimateSkillPrefab[3]; break;
+                ultimateSkill = ultimateSkillPrefab[3];
+                Ac_ShowdownSkill += Showdown_Wind; break;
         }
         return ultimateSkill;
     }
@@ -142,17 +148,7 @@ public class SkillsManager : MonoBehaviour
     public float skillForce = 40.0f;
     // 스킬의 지속시간
     [HideInInspector] public float skillDuration = 2f;
-    private void Update()
-    {
-        if (showdownCount >= 1 && skillLaunched == false)
-        {
-            ShowdownSkill();
-        }
-        //if (keydownCount >= 1 && skillLaunched == false)
-        //{
-        //    //KeydownSkill();
-        //}
-    }
+   
     void LaunchSkill(Vector3 spawnPos)
     {
         Debug.Log("스킬발사 중");
@@ -189,6 +185,7 @@ public class SkillsManager : MonoBehaviour
     private Vector3 targetPos;
     [SerializeField] private int ThreeGo = 3;
     [SerializeField] private int dashDistance = 6;
+    //private Collider characterColl;
     public int threeGo
     {
         get { return ThreeGo; }
@@ -205,15 +202,17 @@ public class SkillsManager : MonoBehaviour
             ThreeGo = value; 
         }
     }
-    public float handDis = 0.02f;
+    public float handDis = 0.002f;
     public void UseThreeGo()
     {
+        print("1");
         if ((lefthandPos.transform.position - player.transform.position).magnitude < handDis)
         {
             return;
         }
         if (skillLaunched == false && threeGo >= 1)
         {
+            print("2");
             skillLaunched = true;
             targetPos = player.transform.position;
             threeGo--;
@@ -225,6 +224,7 @@ public class SkillsManager : MonoBehaviour
    
     public void GetTargetPos()
     {
+        print("3");
         RaycastHit hit = crosshairray.hit;
         Vector3 _temphit = new Vector3(hit.point.x, 0, hit.point.z);
         Vector3 _tempplayer = new Vector3(player.transform.position.x, 0, player.transform.position.z);
@@ -241,12 +241,20 @@ public class SkillsManager : MonoBehaviour
     }
     public IEnumerator GoDash()
     {
+        print("4");
         float _t = 0f;
         Vector3 _origin = player.transform.position;
+        print(player.transform.position);
         while (_t <= 0.1f)
         {
+            //if ( 0f <= _t && _t <= 0.05f)
+            //{
+            //    characterColl.enabled = false;
+            //}
+            //characterColl.enabled = true;
             _t += Time.deltaTime;
             player.transform.position = new Vector3(_origin.x + targetPos.x * (_t / 0.1f), player.transform.position.y, _origin.z + targetPos.z * (_t / 0.1f));
+            print(player.transform.position);
             yield return null;
         }
         player.transform.position = new Vector3(_origin.x + targetPos.x, player.transform.position.y, _origin.z + targetPos.z);
@@ -293,11 +301,12 @@ public class SkillsManager : MonoBehaviour
             // 스킬 프리팹을 생성하고 지정된 위치에 생성합니다. Quaternion.LookRotation(localForward)
             skillBox = Instantiate(SkillSet[0], shotPos, Quaternion.LookRotation(hit.point - shotPos));
 
+
             Rigidbody skillRigidbody = skillBox.GetComponent<Rigidbody>();
             if (skillRigidbody != null)
             {
                 // Rigidbody가 있다면 지정된 방향으로 힘을 가합니다.
-                skillRigidbody.AddForce((hit.point - shotPos) * skillForce, ForceMode.Impulse);
+                skillRigidbody.AddForce((hit.point - shotPos).normalized * skillForce, ForceMode.Impulse);
             }
 
             skillLaunched = true;
@@ -316,7 +325,7 @@ public class SkillsManager : MonoBehaviour
     //}
 
     //================================
-
+    #region 키다운
     //키다운을 이벤트 액션으로 처리
     private event Action Ac_KeydownSkill;
     public void UseKeydownSkill()
@@ -328,7 +337,6 @@ public class SkillsManager : MonoBehaviour
     [SerializeField] private float time_step = 0.2f; //아이스용 생성간격
     private void Keydown_Fire()
     {
-        print("불");
         if (keydownCount == 2 && skillLaunched == false &&
             Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
         {
@@ -340,12 +348,12 @@ public class SkillsManager : MonoBehaviour
     {
         //if (isKeydownSkill != null) yield break; //재동작하는걸 막음(스킬런치가 이미 막고있음)
         float _t = 0;
-        print("불2");
+        RaycastHit hit = crosshairray.hit;
         skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
-        skillBox.transform.SetParent(righthandPos.transform);
         while (_t < time_holding)
         {
             _t += Time.deltaTime;
+            skillBox.transform.LookAt(hit.point);
             yield return null;
             if (keydownCount < 2)
             {
@@ -359,7 +367,6 @@ public class SkillsManager : MonoBehaviour
     }
     private void Keydown_Ice() //시전시 코루틴으로 얼음을 hit.point에 생성
     {
-        print("얼음");
         if (keydownCount == 2 && skillLaunched == false &&
             Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
         {
@@ -369,7 +376,6 @@ public class SkillsManager : MonoBehaviour
     }
     private IEnumerator IceMake()
     {
-        print("얼음2");
         //if (isKeydownSkill != null) yield break;
         float _t = 0;
         while (_t < time_holding) //5초간 지속
@@ -391,7 +397,6 @@ public class SkillsManager : MonoBehaviour
     }
     private void Keydown_Ele()
     {
-        print("번개");
         if (keydownCount == 2 && skillLaunched == false &&
             Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
         {
@@ -402,7 +407,6 @@ public class SkillsManager : MonoBehaviour
     private IEnumerator EleMake()
     {
         float _t = 0;
-        print("번개3");
         skillBox = Instantiate(SkillSet[1], player.transform.position, Quaternion.identity);
         skillBox.transform.SetParent(player.transform);
         while (_t < time_holding) //5초간 지속
@@ -450,7 +454,9 @@ public class SkillsManager : MonoBehaviour
         skillLaunched = false;
         Destroy(skillBox);
     }
+    #endregion
     //================================
+    #region 쓰로우
     public void PreThrowSkill()
     {
         //날리기 전 사전 손동작 스킬
@@ -476,7 +482,7 @@ public class SkillsManager : MonoBehaviour
             Vector3 shotPos = righthandPos.transform.position + (righthandPos.transform.right * -0.03f) + (righthandPos.transform.forward * -0.1f);
             skillBox.transform.SetParent(null);
             Rigidbody rb = skillBox.gameObject.GetComponent<Rigidbody>();
-            Vector3 targetPos = (hit.point - shotPos);
+            Vector3 targetPos = (hit.point - shotPos).normalized;
 
             targetPos.y = 0;
             skillBox.transform.rotation = Quaternion.identity;
@@ -503,15 +509,86 @@ public class SkillsManager : MonoBehaviour
         ThrowSkillEffect _throwskill = skillBox.GetComponent<ThrowSkillEffect>();
         _throwskill.TestCor();
     }
-    //===============
-    private void ShowdownSkill()
+
+    #endregion
+    //==================================
+    #region 궁
+    private event Action Ac_ShowdownSkill;
+    [SerializeField] private bool makeShowdownkill;
+    [SerializeField] private int showtimeDelay = 3;
+    [SerializeField] private float showdownForce = 5f;
+    public GameObject testasdfawef;
+    public void UseShowdownSkill()
     {
-        if (showdownCount == 2)
+        Ac_ShowdownSkill();
+    }
+    public void PreShowdown()
+    {
+        if (skillLaunched == false && showdownCount == 2 &&
+            (lefthandPos.transform.position - righthandPos.transform.position).magnitude >= 0.6f)
         {
-            skillBox = Instantiate(SkillSet[3], righthandPos.transform.position, Quaternion.identity);
             skillLaunched = true;
+            skillBox = Instantiate(testasdfawef, Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f), Quaternion.identity);
+            StartCoroutine(Showtime());
         }
     }
+    private IEnumerator Showtime()
+    {
+        float _t = 0f;
+        while (_t < showtimeDelay)
+        {
+            _t += Time.deltaTime;
+            skillBox.transform.position = Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f);
+            yield return null;
+        }
+        if ((lefthandPos.transform.position - righthandPos.transform.position).magnitude <= 0.6f)
+        {
+            makeShowdownkill = true;
+            Destroy(skillBox);
+        }
+    }
+
+    private void Showdown_Fire()
+    {
+        RaycastHit hit = crosshairray.hit;
+        if (makeShowdownkill)
+        {
+            skillBox = Instantiate(SkillSet[3], player.transform.position + (Vector3.up * 10), Quaternion.identity);
+            skillBox.GetComponent<Rigidbody>().AddForce((hit.point - skillBox.transform.position).normalized * showdownForce);
+        }
+    }
+    private void Showdown_Ice()
+    {
+
+    }
+    private void Showdown_Ele()
+    {
+
+    }
+    private void Showdown_Wind()
+    {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
     public void DestroySkill()
     {
         Destroy(skillBox);

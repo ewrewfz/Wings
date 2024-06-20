@@ -4908,8 +4908,8 @@ GameObject:
   - component: {fileID: 4256530210309749944}
   - component: {fileID: 7835602931517568148}
   - component: {fileID: 6663285243583567723}
-  - component: {fileID: 2152857792439272061}
   - component: {fileID: -7869695883901974054}
+  - component: {fileID: 8843616851147813644}
   m_Layer: 7
   m_Name: fx_ice_single
   m_TagString: Untagged
@@ -4925,7 +4925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2732017278556919038}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9798,27 +9798,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!65 &2152857792439272061
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732017278556919038}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.244097, y: 0.41018945, z: 0.38441926}
-  m_Center: {x: 0.016598582, y: -0.00059589744, z: 0.0065656602}
 --- !u!54 &-7869695883901974054
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9841,11 +9820,34 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &8843616851147813644
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732017278556919038}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11937973
+  m_Height: 1.1467056
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.004817188, z: -0.021872997}
 --- !u!1 &6568397361328675569
 GameObject:
   m_ObjectHideFlags: 0

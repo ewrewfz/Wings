@@ -10,8 +10,8 @@ public class EleKeydownEffect : MonoBehaviour
     private float radius;
     public float rotateSpeed;
     private ParticleSystem[] eleBalls;
-    //public float diversionSpeed;
-    //private float _t = 0f;
+    public float diversionSpeed;
+    private float _t = 0f;
     private void Start() // 초기위치를 개수에 따라 일정한 간격으로 생성
     {
         eleBalls = new ParticleSystem[ballNum];
@@ -32,13 +32,13 @@ public class EleKeydownEffect : MonoBehaviour
 
     private void Update() // 돌아감, 주석처리는 돌아가면서 퍼졌다 모였다함
     {
-        //_t += Time.deltaTime;
+        _t += Time.deltaTime;
         for (int i = 0; i < ballNum; i++)
         {
             eleBalls[i].transform.RotateAround(transform.position, Vector3.up, rotateSpeed * Time.deltaTime);
-            //eleBalls[i].transform.LookAt(transform.position);
-            //eleBalls[i].transform.Rotate(0, 180, 0);
-            //eleBalls[i].transform.Translate(Vector3.forward * Mathf.Sin(diversionSpeed * _t) * 0.02f);
+            eleBalls[i].transform.LookAt(transform.position);
+            eleBalls[i].transform.Rotate(0, 180, 0);
+            eleBalls[i].transform.Translate(Vector3.forward * Mathf.Sin(diversionSpeed * _t) * 0.02f);
         }
     }
 }

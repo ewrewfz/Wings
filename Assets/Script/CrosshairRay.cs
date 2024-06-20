@@ -12,13 +12,13 @@ public class CrosshairRay : MonoBehaviour
     public float skillDistance;
     private GameObject cross;
     private int layerMask;
-    public SkillsManager skillsManager;
     private bool onCrosshair = false;
     //private LineRenderer line;
 
     private void Start()
     {
-        layerMask = (-1) - (1 << LayerMask.NameToLayer("Skill")); //스킬은 통과
+        layerMask = ((1 << LayerMask.NameToLayer("Skill")) | (1 << LayerMask.NameToLayer("Hand"))); //스킬은 통과
+        layerMask = ~layerMask;
         cross = Instantiate(crosshair);
         skillDistance = 50f;
         //line = GetComponent<LineRenderer>();
