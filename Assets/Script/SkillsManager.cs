@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class SkillsManager : MonoBehaviour
 {
@@ -205,14 +206,12 @@ public class SkillsManager : MonoBehaviour
     public float handDis = 0.002f;
     public void UseThreeGo()
     {
-        print("1");
         if ((lefthandPos.transform.position - player.transform.position).magnitude < handDis)
         {
             return;
         }
-        if (skillLaunched == false && threeGo >= 1)
+        else if (skillLaunched == false && threeGo >= 1)
         {
-            print("2");
             skillLaunched = true;
             targetPos = player.transform.position;
             threeGo--;
@@ -224,7 +223,6 @@ public class SkillsManager : MonoBehaviour
    
     public void GetTargetPos()
     {
-        print("3");
         RaycastHit hit = crosshairray.hit;
         Vector3 _temphit = new Vector3(hit.point.x, 0, hit.point.z);
         Vector3 _tempplayer = new Vector3(player.transform.position.x, 0, player.transform.position.z);
@@ -241,7 +239,6 @@ public class SkillsManager : MonoBehaviour
     }
     public IEnumerator GoDash()
     {
-        print("4");
         float _t = 0f;
         Vector3 _origin = player.transform.position;
         print(player.transform.position);
@@ -254,7 +251,6 @@ public class SkillsManager : MonoBehaviour
             //characterColl.enabled = true;
             _t += Time.deltaTime;
             player.transform.position = new Vector3(_origin.x + targetPos.x * (_t / 0.1f), player.transform.position.y, _origin.z + targetPos.z * (_t / 0.1f));
-            print(player.transform.position);
             yield return null;
         }
         player.transform.position = new Vector3(_origin.x + targetPos.x, player.transform.position.y, _origin.z + targetPos.z);
@@ -516,8 +512,8 @@ public class SkillsManager : MonoBehaviour
     private event Action Ac_ShowdownSkill;
     [SerializeField] private bool makeShowdownkill;
     [SerializeField] private int showtimeDelay = 3;
-    [SerializeField] private float showdownForce = 5f;
-    public GameObject testasdfawef;
+    [SerializeField] private float showdownForce = 10f;
+    public ParticleSystem showdownAfterEffect;
     public void UseShowdownSkill()
     {
         Ac_ShowdownSkill();
@@ -525,10 +521,10 @@ public class SkillsManager : MonoBehaviour
     public void PreShowdown()
     {
         if (skillLaunched == false && showdownCount == 2 &&
-            (lefthandPos.transform.position - righthandPos.transform.position).magnitude >= 0.6f)
+            (lefthandPos.transform.position - righthandPos.transform.position).magnitude >= 0.2f)
         {
             skillLaunched = true;
-            skillBox = Instantiate(testasdfawef, Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f), Quaternion.identity);
+            skillBox = Instantiate(SkillSet[0], Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f), Quaternion.identity);
             StartCoroutine(Showtime());
         }
     }
@@ -539,12 +535,23 @@ public class SkillsManager : MonoBehaviour
         {
             _t += Time.deltaTime;
             skillBox.transform.position = Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f);
+            skillBox.transform.localScale = Vector3.Lerp(Vector3.zero,Vector3.one * 0.3f, _t/ showtimeDelay);
             yield return null;
         }
         if ((lefthandPos.transform.position - righthandPos.transform.position).magnitude <= 0.6f)
         {
             makeShowdownkill = true;
             Destroy(skillBox);
+            StartCoroutine(ShowtimeAfterEffect());
+        }
+    }
+    private IEnumerator ShowtimeAfterEffect()
+    {
+        while (makeShowdownkill)
+        {
+            Destroy(Instantiate(showdownAfterEffect, lefthandPos.transform.position, Quaternion.identity),1);
+            Destroy(Instantiate(showdownAfterEffect, righthandPos.transform.position, Quaternion.identity),1);
+            yield return new WaitForSeconds(1);
         }
     }
 
@@ -556,37 +563,67 @@ public class SkillsManager : MonoBehaviour
             skillBox = Instantiate(SkillSet[3], player.transform.position + (Vector3.up * 10), Quaternion.identity);
             skillBox.GetComponent<Rigidbody>().AddForce((hit.point - skillBox.transform.position).normalized * showdownForce);
         }
+        makeShowdownkill = false;
+        skillLaunched = false;
     }
     private void Showdown_Ice()
     {
-
+        if (makeShowdownkill)
+        {
+            skillBox = Instantiate(SkillSet[3], player.transform.position, Quaternion.identity);
+        }
+        makeShowdownkill = false;
+        skillLaunched = false;
     }
     private void Showdown_Ele()
     {
-
+        RaycastHit hit = crosshairray.hit;
+        if (makeShowdownkill)
+        {
+            skillBox = Instantiate(SkillSet[3], Vector3.zero, Quaternion.identity);
+            skillBox.transform.Rotate(-90, 0, -30);
+            skillBox.transform.SetParent(player.transform, true);
+            StartCoroutine(Showdown_EleEffect());
+        }
+        makeShowdownkill = false;
+        skillLaunched = false;
+    }
+    private IEnumerator Showdown_EleEffect()
+    {
+        float _t = 0f;
+        Vector3 _origin = skillBox.transform.position;
+        while (_t < 0.1f)
+        {
+            _t += Time.deltaTime;
+            skillBox.transform.localPosition = Vector3.Lerp(_origin, _origin + player.transform.right, _t / 0.1f);
+            skillBox.transform.Rotate(Vector3.up, 60 * (_t / 0.1f));
+            yield return null;
+        }
     }
     private void Showdown_Wind()
     {
-
+        RaycastHit hit = crosshairray.hit;
+        if (makeShowdownkill)
+        {
+            skillBox = Instantiate(SkillSet[3], player.transform.position, Quaternion.identity);
+            skillBox.GetComponent<Rigidbody>().AddForce((hit.point - skillBox.transform.position).normalized * showdownForce);
+            StartCoroutine(Showdown_WindEffect(hit));
+        }
+        makeShowdownkill = false;
+        skillLaunched = false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private IEnumerator Showdown_WindEffect(RaycastHit _hit)
+    {
+        float _t = 0f;
+        Vector3 _originVel = skillBox.GetComponent<Rigidbody>().velocity;
+        while (_t < 10f)
+        {
+            _t += Time.deltaTime;
+            Vector3 toTarget = (_hit.point - transform.position).normalized;
+            skillBox.GetComponent<Rigidbody>().velocity = toTarget * _originVel.magnitude;
+            yield return null;
+        }
+    }
 
     #endregion
     public void DestroySkill()
