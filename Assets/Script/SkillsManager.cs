@@ -1,3 +1,4 @@
+using Fusion;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ public class SkillsManager : MonoBehaviour
     public GameObject[] ultimateSkillPrefab;
 
     public List<GameObject> SkillSet = new List<GameObject>();
-
+    public SkillUI skillUI;
 
     private void Awake()
     {
@@ -35,6 +36,15 @@ public class SkillsManager : MonoBehaviour
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
     }
+    bool _a = true;
+    private void Update()
+    {
+        if (threeGo < 3 && _a)
+        {
+            _a = false;
+             StartCoroutine(ChargeDash());
+        }
+    }
 
     private GameObject SingleSkill(Property property)
     {
@@ -43,18 +53,19 @@ public class SkillsManager : MonoBehaviour
         {
             case Property.Fire:
                 singleSkill = singleSkillPrefab[0];
+                skillUI.set_skills[0].sprite = skillUI.all_skills[0];
                 break;
             case Property.Ice:
-
                 singleSkill = singleSkillPrefab[1];
+                skillUI.set_skills[0].sprite = skillUI.all_skills[1];
                 break;
             case Property.Lightning:
-
                 singleSkill = singleSkillPrefab[2];
+                skillUI.set_skills[0].sprite = skillUI.all_skills[2];
                 break;
             case Property.None:
-
                 singleSkill = singleSkillPrefab[3];
+                skillUI.set_skills[0].sprite = skillUI.all_skills[3];
                 break;
         }
         return singleSkill;
@@ -68,18 +79,22 @@ public class SkillsManager : MonoBehaviour
             case Property.Fire:
                 keydownSkill = keydownSkillPrefab[0];
                 Ac_KeydownSkill += Keydown_Fire;
+                skillUI.set_skills[1].sprite = skillUI.all_skills[4];
                 break;
             case Property.Ice:
                 keydownSkill = keydownSkillPrefab[1];
                 Ac_KeydownSkill += Keydown_Ice;
+                skillUI.set_skills[1].sprite = skillUI.all_skills[5];
                 break;
             case Property.Lightning:
                 keydownSkill = keydownSkillPrefab[2];
                 Ac_KeydownSkill += Keydown_Ele;
+                skillUI.set_skills[1].sprite = skillUI.all_skills[6];
                 break;
             case Property.None:
                 keydownSkill = keydownSkillPrefab[3];
                 Ac_KeydownSkill += Keydown_Wind;
+                skillUI.set_skills[1].sprite = skillUI.all_skills[7];
                 break;
         }
         return keydownSkill;
@@ -91,13 +106,21 @@ public class SkillsManager : MonoBehaviour
         switch (property)
         {
             case Property.Fire:
-                throwSkill = throwSkillPrefab[0]; break;
+                throwSkill = throwSkillPrefab[0];
+                skillUI.set_skills[2].sprite = skillUI.all_skills[8];
+                break;
             case Property.Ice:
-                throwSkill = throwSkillPrefab[1]; break;
+                throwSkill = throwSkillPrefab[1];
+                skillUI.set_skills[2].sprite = skillUI.all_skills[9];
+                break;
             case Property.Lightning:
-                throwSkill = throwSkillPrefab[2]; break;
+                throwSkill = throwSkillPrefab[2];
+                skillUI.set_skills[2].sprite = skillUI.all_skills[10];
+                break;
             case Property.None:
-                throwSkill = throwSkillPrefab[3]; break;
+                throwSkill = throwSkillPrefab[3];
+                skillUI.set_skills[2].sprite = skillUI.all_skills[11];
+                break;
         }
         return throwSkill;
     }
@@ -109,16 +132,24 @@ public class SkillsManager : MonoBehaviour
         {
             case Property.Fire:
                 ultimateSkill = ultimateSkillPrefab[0];
-                Ac_ShowdownSkill += Showdown_Fire; break;
+                Ac_ShowdownSkill += Showdown_Fire;
+                skillUI.set_skills[3].sprite = skillUI.all_skills[12];
+                break;
             case Property.Ice:
                 ultimateSkill = ultimateSkillPrefab[1];
-                Ac_ShowdownSkill += Showdown_Ice; break;
+                Ac_ShowdownSkill += Showdown_Ice;
+                skillUI.set_skills[3].sprite = skillUI.all_skills[13]  ;
+                break;
             case Property.Lightning:
                 ultimateSkill = ultimateSkillPrefab[2];
-                Ac_ShowdownSkill += Showdown_Ele; break;
+                Ac_ShowdownSkill += Showdown_Ele;
+                skillUI.set_skills[3].sprite = skillUI.all_skills[14];
+                break;
             case Property.None:
                 ultimateSkill = ultimateSkillPrefab[3];
-                Ac_ShowdownSkill += Showdown_Wind; break;
+                Ac_ShowdownSkill += Showdown_Wind;
+                skillUI.set_skills[3].sprite = skillUI.all_skills[15];
+                break;
         }
         return ultimateSkill;
     }
@@ -186,21 +217,25 @@ public class SkillsManager : MonoBehaviour
     private Vector3 targetPos;
     [SerializeField] private int ThreeGo = 3;
     [SerializeField] private int dashDistance = 6;
+    [SerializeField] private int chargeTime = 3;
     //private Collider characterColl;
     public int threeGo
     {
         get { return ThreeGo; }
         set 
         { 
-            if (ThreeGo > 3)
+            if (value > 3)
             {
                 ThreeGo = 3;
             }
-            else if (ThreeGo <= 0)
+            else if (value <= 0)
             {
                 ThreeGo = 0;
             }
-            ThreeGo = value; 
+            else
+            {
+                ThreeGo = value; 
+            }
         }
     }
     public float handDis = 0.002f;
@@ -255,25 +290,24 @@ public class SkillsManager : MonoBehaviour
         }
         player.transform.position = new Vector3(_origin.x + targetPos.x, player.transform.position.y, _origin.z + targetPos.z);
         skillLaunched = false;
+        
     }
 
-
+    private IEnumerator ChargeDash()
+    {
+        if (threeGo < 3)
+        {
+            yield return new WaitForSeconds(chargeTime);
+            threeGo++;
+        }
+        _a = true;
+    }
 
 
     #endregion
     //===================================
-
-
-    IEnumerator DestroySkillAfterDuration()
-    {
-        // 스킬 지속 시간만큼 대기
-        yield return new WaitForSeconds(skillDuration);
-
-        // 파괴
-        skillLaunched = false;
-        Destroy(skillBox);
-    }
-    public void SingleSkill()
+    #region 싱글
+    public void SingleSkill() //RPC
     {
         bool cool = true;
         bool righttransform = true;
@@ -295,18 +329,18 @@ public class SkillsManager : MonoBehaviour
             Vector3 shotPos = hmdParent + righthandPos.transform.position;
 
             // 스킬 프리팹을 생성하고 지정된 위치에 생성합니다. Quaternion.LookRotation(localForward)
-            skillBox = Instantiate(SkillSet[0], shotPos, Quaternion.LookRotation(hit.point - shotPos));
+            skillBox = Instantiate(SkillSet[0], shotPos, Quaternion.LookRotation(hit.point - shotPos));//포톤뷰 호스트 ->클라
 
 
             Rigidbody skillRigidbody = skillBox.GetComponent<Rigidbody>();
             if (skillRigidbody != null)
             {
                 // Rigidbody가 있다면 지정된 방향으로 힘을 가합니다.
-                skillRigidbody.AddForce((hit.point - shotPos).normalized * skillForce, ForceMode.Impulse);
+                skillRigidbody.AddForce((hit.point - shotPos).normalized * skillForce, ForceMode.Impulse); //포톤뷰 호스트 ->클라
             }
 
-            skillLaunched = true;
-            StartCoroutine(DestroySkillAfterDuration());
+            skillLaunched = true; //포톤뷰 호스트 -> 클라?
+            StartCoroutine(DestroySkillAfterDuration()); //포톤뷰 호스트 -> 클라
         }
     }
 
@@ -319,7 +353,7 @@ public class SkillsManager : MonoBehaviour
     //        skillLaunched = true;
     //    }
     //}
-
+    #endregion
     //================================
     #region 키다운
     //키다운을 이벤트 액션으로 처리
@@ -626,10 +660,22 @@ public class SkillsManager : MonoBehaviour
     }
 
     #endregion
+    //=================================
+
     public void DestroySkill()
     {
         Destroy(skillBox);
         skillLaunched = false;
+    }
+
+    IEnumerator DestroySkillAfterDuration()
+    {
+        // 스킬 지속 시간만큼 대기
+        yield return new WaitForSeconds(skillDuration);
+
+        // 파괴
+        skillLaunched = false;
+        Destroy(skillBox);
     }
     #region 카운트
 
