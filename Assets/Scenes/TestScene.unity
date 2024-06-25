@@ -177,14 +177,17 @@ MonoBehaviour:
   _transformFeatureConfigs:
     _values:
     - _mode: 0
-      _feature: 6
-      _state: 18
-    - _mode: 0
       _feature: 5
       _state: 17
     - _mode: 0
       _feature: 4
       _state: 14
+    - _mode: 0
+      _feature: 3
+      _state: 11
+    - _mode: 0
+      _feature: 2
+      _state: 8
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
@@ -264,7 +267,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1683565206}
         m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: PreShowdown
+        m_MethodName: ShowdownCountDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -314,7 +317,7 @@ MonoBehaviour:
   _hand: {fileID: 15980273}
   _fingerFeatureStateProvider: {fileID: 1411614457}
   _shapes:
-  - {fileID: 11400000, guid: d03990bea704f5a4aac7e37517d718e8, type: 2}
+  - {fileID: 11400000, guid: b0f039428fdcbf848935698c92413fbc, type: 2}
 --- !u!114 &15980273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,46 +870,10 @@ MonoBehaviour:
   _selector: {fileID: 178125531}
   _whenSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1683565206}
-        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: ShowdownCountUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1683565206}
-        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: PreShowdown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenUnselected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1683565206}
-        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
-        m_MethodName: ShowdownCountDown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &178125531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,6 +1686,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394465671}
   m_CullTransparentMesh: 1
+--- !u!4 &398497842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341548598124466611, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &436722255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,14 +2989,17 @@ MonoBehaviour:
   _transformFeatureConfigs:
     _values:
     - _mode: 0
-      _feature: 6
-      _state: 18
-    - _mode: 0
       _feature: 5
       _state: 17
     - _mode: 0
       _feature: 4
       _state: 14
+    - _mode: 0
+      _feature: 2
+      _state: 8
+    - _mode: 0
+      _feature: 3
+      _state: 11
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
@@ -3153,7 +3129,7 @@ MonoBehaviour:
   _hand: {fileID: 674520264}
   _fingerFeatureStateProvider: {fileID: 700344016}
   _shapes:
-  - {fileID: 11400000, guid: d03990bea704f5a4aac7e37517d718e8, type: 2}
+  - {fileID: 11400000, guid: b0f039428fdcbf848935698c92413fbc, type: 2}
 --- !u!114 &674520264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3469,6 +3445,12 @@ Transform:
 --- !u!4 &715271279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6305737498139461415, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &734965119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3036878529974934363, guid: f39a9d103c4129b42a53567f6cd8356a,
     type: 3}
   m_PrefabInstance: {fileID: 1567602938}
   m_PrefabAsset: {fileID: 0}
@@ -3950,6 +3932,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 842682857}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &844922670 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341548597274462025, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &857285230
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4054,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4afa4b2bf8765af4e8463008a7721039, type: 3}
+--- !u!4 &974248915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 341548597951828173, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &978127326
 GameObject:
   m_ObjectHideFlags: 0
@@ -6738,6 +6732,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2017730564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1566793562 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3036878530036188312, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1567602938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8435,7 +8435,11 @@ MonoBehaviour:
   - {fileID: 8099068254799005585, guid: aa072931303db134f8faf0ced57121d8, type: 3}
   - {fileID: 5341122865899218607, guid: fb21156971bbb734e97d336a9b8c7747, type: 3}
   - {fileID: 656621594647593816, guid: 7137b423a389b3c4ba87075301f3bd7c, type: 3}
-  SkillSet: []
+  SkillSet:
+  - {fileID: 5687270235789793220, guid: ed0bea04b26f9c74f9f6f01a83a9aace, type: 3}
+  - {fileID: 5687270235789793220, guid: ed0bea04b26f9c74f9f6f01a83a9aace, type: 3}
+  - {fileID: 2732017278556919038, guid: 908140f580b1d96428ef40d4aadd7776, type: 3}
+  - {fileID: 656621594647593816, guid: 7137b423a389b3c4ba87075301f3bd7c, type: 3}
   skillUI: {fileID: 628790356}
   skillLaunched: 0
   PreSkillLaunched: 0
@@ -8445,18 +8449,30 @@ MonoBehaviour:
   skillSpawnDistance: 10
   skillForce: 30
   skillDuration: 2
+  rightFingerTr:
+  - {fileID: 974248915}
+  - {fileID: 398497842}
+  - {fileID: 844922670}
+  leftFingerTr:
+  - {fileID: 734965119}
+  - {fileID: 1566793562}
+  - {fileID: 1881961720}
   player: {fileID: 1567602944}
   ThreeGo: 3
   dashDistance: 6
   chargeTime: 3
-  handDis: 0.8
+  handDisDash: 0.02
   time_holding: 5
   time_step: 0.2
+  throwForce: 80
   makeShowdownkill: 0
   showtimeDelay: 3
-  showdownForce: 30
+  showdownForce: 50
+  preshowDis: 0.3
+  showDis: 0.2
   showdownAfterEffect: {fileID: 7619783646628834398, guid: ec7e036eabbbf774faece31f88f51727,
     type: 3}
+  showdownCount: 0
 --- !u!1 &1715157852
 GameObject:
   m_ObjectHideFlags: 0
@@ -9640,6 +9656,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac558de6fb637548a9e3e0483939688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1881961720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3036878530221160838, guid: f39a9d103c4129b42a53567f6cd8356a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567602938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1888743912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 14c41db8e1f5e1649b3c91ef376ba83e,

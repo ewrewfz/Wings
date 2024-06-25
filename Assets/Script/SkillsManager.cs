@@ -31,8 +31,8 @@ public class SkillsManager : MonoBehaviour
         SkillSet.Add(ThrowSkill(RandomProperty()));
         SkillSet.Add(UltimateSkill(RandomProperty()));
 
-        righthandPos = GameObject.FindWithTag("R_Hand").transform.gameObject;
-        lefthandPos = GameObject.FindWithTag("L_Hand").transform.gameObject;
+        //righthandPos = GameObject.FindWithTag("R_Hand").transform.gameObject;
+        //lefthandPos = GameObject.FindWithTag("L_Hand").transform.gameObject;
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
     }
@@ -132,17 +132,17 @@ public class SkillsManager : MonoBehaviour
         {
             case Property.Fire:
                 ultimateSkill = ultimateSkillPrefab[0];
-                Ac_ShowdownSkill += Showdown_Fire;
+                Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[12];
                 break;
             case Property.Ice:
                 ultimateSkill = ultimateSkillPrefab[1];
-                Ac_ShowdownSkill += Showdown_Ice;
+                Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[13]  ;
                 break;
             case Property.Lightning:
                 ultimateSkill = ultimateSkillPrefab[2];
-                Ac_ShowdownSkill += Showdown_Ele;
+                Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[14];
                 break;
             case Property.None:
@@ -166,8 +166,6 @@ public class SkillsManager : MonoBehaviour
     public bool PreSkillLaunched = false;
 
     private GameObject skillBox;
-    private GameObject righthandPos;
-    private GameObject lefthandPos;
     //크로스헤어 받아오기
     public CrosshairRay crosshairray;
     //hmd부모위치 받아오기(현재위치 계산용)
@@ -180,35 +178,9 @@ public class SkillsManager : MonoBehaviour
     public float skillForce = 40.0f;
     // 스킬의 지속시간
     [HideInInspector] public float skillDuration = 2f;
-   
-    void LaunchSkill(Vector3 spawnPos)
-    {
-        Debug.Log("스킬발사 중");
-
-        // handPos의 로컬 forward 방향을 기준으로 발사 방향을 계산합니다.
-        Vector3 localForward = righthandPos.transform.forward;
-
-        // handPos의 로컬 forward 방향을 기준으로 발사 위치를 계산합니다.
-        Vector3 localShootPosition = localForward * skillSpawnDistance;
-
-        // localShootPosition을 world space로 변환하여 실제 발사 위치를 계산합니다.
-        Vector3 shootPosition = righthandPos.transform.TransformPoint(localShootPosition);
-
-        // 스킬 프리팹을 생성하고 지정된 위치에 생성합니다.
-        skillBox = Instantiate(SkillSet[1], shootPosition, Quaternion.LookRotation(localForward));
-
-        Rigidbody skillRigidbody = skillBox.GetComponent<Rigidbody>();
-        if (skillRigidbody != null)
-        {
-            // Rigidbody가 있다면 지정된 방향으로 힘을 가합니다.
-            skillRigidbody.AddForce(localForward * skillForce, ForceMode.Impulse);
-        }
-
-        skillLaunched = true;
-
-        // 스킬 사용 시간이 지난 후 스킬을 파괴하는 코루틴을 시작합니다.
-        //StartCoroutine(DestroySkillAfterDuration());
-    }
+    //====================================
+    public Transform[] rightFingerTr = new Transform[3]; //0 is palm center, 1 is indexFinger tip, 2 is middleFinger pad
+    public Transform[] leftFingerTr = new Transform[3];
     //=========== GoStop=================
     #region Dash
 
@@ -238,10 +210,10 @@ public class SkillsManager : MonoBehaviour
             }
         }
     }
-    public float handDis = 0.002f;
+    public float handDisDash = 0.02f;
     public void UseThreeGo()
     {
-        if ((lefthandPos.transform.position - player.transform.position).magnitude < handDis)
+        if ((leftFingerTr[0].position - player.transform.position).magnitude < handDisDash)
         {
             return;
         }
@@ -326,17 +298,16 @@ public class SkillsManager : MonoBehaviour
             //Vector3 shootPosition = righthandPos.transform.TransformPoint(localShootPosition);
 
             //스킬 나가는 위치 (오른손 끝)
-            Vector3 shotPos = hmdParent + righthandPos.transform.position;
 
             // 스킬 프리팹을 생성하고 지정된 위치에 생성합니다. Quaternion.LookRotation(localForward)
-            skillBox = Instantiate(SkillSet[0], shotPos, Quaternion.LookRotation(hit.point - shotPos));//포톤뷰 호스트 ->클라
+            skillBox = Instantiate(SkillSet[0], rightFingerTr[0].position, Quaternion.LookRotation(hit.point - rightFingerTr[1].position));//포톤뷰 호스트 ->클라
 
 
             Rigidbody skillRigidbody = skillBox.GetComponent<Rigidbody>();
             if (skillRigidbody != null)
             {
                 // Rigidbody가 있다면 지정된 방향으로 힘을 가합니다.
-                skillRigidbody.AddForce((hit.point - shotPos).normalized * skillForce, ForceMode.Impulse); //포톤뷰 호스트 ->클라
+                skillRigidbody.AddForce((hit.point - rightFingerTr[1].position).normalized * skillForce, ForceMode.Impulse); //포톤뷰 호스트 ->클라
             }
 
             skillLaunched = true; //포톤뷰 호스트 -> 클라?
@@ -368,7 +339,7 @@ public class SkillsManager : MonoBehaviour
     private void Keydown_Fire()
     {
         if (keydownCount == 2 && skillLaunched == false &&
-            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+            Vector3.Distance(rightFingerTr[2].position, leftFingerTr[2].position) <= 0.1f)
         {
             skillLaunched = true;
             StartCoroutine(FireMake());
@@ -379,11 +350,11 @@ public class SkillsManager : MonoBehaviour
         //if (isKeydownSkill != null) yield break; //재동작하는걸 막음(스킬런치가 이미 막고있음)
         float _t = 0;
         RaycastHit hit = crosshairray.hit;
-        skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
+        skillBox = Instantiate(SkillSet[1], rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
+        skillBox.transform.SetParent(rightFingerTr[2]);
         while (_t < time_holding)
         {
             _t += Time.deltaTime;
-            skillBox.transform.LookAt(hit.point);
             yield return null;
             if (keydownCount < 2)
             {
@@ -398,7 +369,7 @@ public class SkillsManager : MonoBehaviour
     private void Keydown_Ice() //시전시 코루틴으로 얼음을 hit.point에 생성
     {
         if (keydownCount == 2 && skillLaunched == false &&
-            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+            Vector3.Distance(rightFingerTr[2].position, leftFingerTr[2].position) <= 0.1f)
         {
             skillLaunched = true;
             StartCoroutine(IceMake());
@@ -428,7 +399,7 @@ public class SkillsManager : MonoBehaviour
     private void Keydown_Ele()
     {
         if (keydownCount == 2 && skillLaunched == false &&
-            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+            Vector3.Distance(rightFingerTr[2].position, leftFingerTr[2].position) <= 0.1f)
         {
             skillLaunched = true;
             StartCoroutine(EleMake());
@@ -458,7 +429,7 @@ public class SkillsManager : MonoBehaviour
     {
         print("바람");
         if (keydownCount == 2 && skillLaunched == false &&
-            Vector3.Distance(righthandPos.transform.position, lefthandPos.transform.position) <= 1f)
+            Vector3.Distance(rightFingerTr[2].position, leftFingerTr[2].position) <= 0.1f)
         {
             skillLaunched = true;
             StartCoroutine(WindMake());
@@ -468,8 +439,8 @@ public class SkillsManager : MonoBehaviour
     {
         float _t = 0;
         print("바람2");
-        skillBox = Instantiate(SkillSet[1], righthandPos.transform.position, Quaternion.identity);
-        skillBox.transform.SetParent(righthandPos.transform);
+        skillBox = Instantiate(SkillSet[1], rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
+        skillBox.transform.SetParent(rightFingerTr[2]);
         while (_t < time_holding) //5초간 지속
         {
             _t += Time.deltaTime;
@@ -487,6 +458,7 @@ public class SkillsManager : MonoBehaviour
     #endregion
     //================================
     #region 쓰로우
+    [SerializeField] private float throwForce = 80.0f;
     public void PreThrowSkill()
     {
         //날리기 전 사전 손동작 스킬
@@ -494,9 +466,8 @@ public class SkillsManager : MonoBehaviour
         bool righttransform = true;
         if (cool && righttransform && skillLaunched == false)
         {
-            Debug.Log("사전손동작 성공");
-            skillBox = Instantiate(SkillSet[2], righthandPos.transform.position + (righthandPos.transform.right * -0.03f) + (righthandPos.transform.forward * -0.1f), Quaternion.identity);
-            skillBox.transform.SetParent(righthandPos.transform);
+            skillBox = Instantiate(SkillSet[2], Vector3.Lerp(rightFingerTr[1].position, rightFingerTr[2].position, 0.5f), Quaternion.identity);
+            skillBox.transform.SetParent(rightFingerTr[1]);
             skillLaunched = true;
             PreSkillLaunched = true;
         }
@@ -509,14 +480,14 @@ public class SkillsManager : MonoBehaviour
         RaycastHit hit = crosshairray.hit;
         if (cool && righttransform && PreSkillLaunched == true)
         {
-            Vector3 shotPos = righthandPos.transform.position + (righthandPos.transform.right * -0.03f) + (righthandPos.transform.forward * -0.1f);
+            Vector3 shotPos = Vector3.Lerp(rightFingerTr[1].position, rightFingerTr[2].position, 0.5f);
             skillBox.transform.SetParent(null);
             Rigidbody rb = skillBox.gameObject.GetComponent<Rigidbody>();
             Vector3 targetPos = (hit.point - shotPos).normalized;
 
             targetPos.y = 0;
             skillBox.transform.rotation = Quaternion.identity;
-            rb.AddForce(targetPos * skillForce);
+            rb.AddForce(targetPos * throwForce);
             skillLaunched = true;
             PreSkillLaunched = false;
             ChangeEffect();
@@ -547,6 +518,8 @@ public class SkillsManager : MonoBehaviour
     [SerializeField] private bool makeShowdownkill;
     [SerializeField] private int showtimeDelay = 3;
     [SerializeField] private float showdownForce = 10f;
+    [SerializeField] private float preshowDis = 0.2f;
+    [SerializeField] private float showDis = 0.2f;
     public ParticleSystem showdownAfterEffect;
     public void UseShowdownSkill()
     {
@@ -555,10 +528,10 @@ public class SkillsManager : MonoBehaviour
     public void PreShowdown()
     {
         if (skillLaunched == false && showdownCount == 2 &&
-            (lefthandPos.transform.position - righthandPos.transform.position).magnitude >= 0.2f)
+            (leftFingerTr[0].position - rightFingerTr[0].position).magnitude >= preshowDis)
         {
             skillLaunched = true;
-            skillBox = Instantiate(SkillSet[0], Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f), Quaternion.identity);
+            skillBox = Instantiate(SkillSet[0], Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position, 0.5f), Quaternion.identity);
             StartCoroutine(Showtime());
         }
     }
@@ -568,24 +541,32 @@ public class SkillsManager : MonoBehaviour
         while (_t < showtimeDelay)
         {
             _t += Time.deltaTime;
-            skillBox.transform.position = Vector3.Lerp(lefthandPos.transform.position, righthandPos.transform.position, 0.5f);
+            skillBox.transform.position = Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position, 0.5f);
             skillBox.transform.localScale = Vector3.Lerp(Vector3.zero,Vector3.one * 0.3f, _t/ showtimeDelay);
             yield return null;
         }
-        if ((lefthandPos.transform.position - righthandPos.transform.position).magnitude <= 0.6f)
+        if ((leftFingerTr[0].position - rightFingerTr[0].position).magnitude <= showDis)
         {
             makeShowdownkill = true;
             Destroy(skillBox);
             StartCoroutine(ShowtimeAfterEffect());
         }
+        else
+        {
+            Destroy(skillBox);
+            skillLaunched = false;
+        }
     }
     private IEnumerator ShowtimeAfterEffect()
     {
+        GameObject _box1, _box2;
         while (makeShowdownkill)
         {
-            Destroy(Instantiate(showdownAfterEffect, lefthandPos.transform.position, Quaternion.identity),1);
-            Destroy(Instantiate(showdownAfterEffect, righthandPos.transform.position, Quaternion.identity),1);
+            _box1 = Instantiate(showdownAfterEffect, leftFingerTr[0].position, Quaternion.identity, leftFingerTr[0]).gameObject;
+            _box2 = Instantiate(showdownAfterEffect, rightFingerTr[0].position, Quaternion.identity, rightFingerTr[0]).gameObject;
             yield return new WaitForSeconds(1);
+            Destroy(_box1);
+            Destroy(_box2);
         }
     }
 
@@ -614,9 +595,8 @@ public class SkillsManager : MonoBehaviour
         RaycastHit hit = crosshairray.hit;
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], Vector3.zero, Quaternion.identity);
-            skillBox.transform.Rotate(-90, 0, -30);
-            skillBox.transform.SetParent(player.transform, true);
+            skillBox = Instantiate(SkillSet[3], rightFingerTr[0].position, Quaternion.identity);
+            skillBox.transform.rotation = Quaternion.Euler(-90, 0, -45);
             StartCoroutine(Showdown_EleEffect());
         }
         makeShowdownkill = false;
@@ -626,35 +606,33 @@ public class SkillsManager : MonoBehaviour
     {
         float _t = 0f;
         Vector3 _origin = skillBox.transform.position;
-        while (_t < 0.1f)
+        while (_t < 2f)
         {
             _t += Time.deltaTime;
-            skillBox.transform.localPosition = Vector3.Lerp(_origin, _origin + player.transform.right, _t / 0.1f);
-            skillBox.transform.Rotate(Vector3.up, 60 * (_t / 0.1f));
+            skillBox.transform.position = Vector3.Lerp(_origin - player.transform.right, _origin + player.transform.right, _t / 2f);
+            skillBox.transform.rotation = Quaternion.Euler(-90, 0, -45 + 90 * (_t / 2f));
             yield return null;
         }
     }
     private void Showdown_Wind()
     {
-        RaycastHit hit = crosshairray.hit;
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], player.transform.position, Quaternion.identity);
-            skillBox.GetComponent<Rigidbody>().AddForce((hit.point - skillBox.transform.position).normalized * showdownForce);
-            StartCoroutine(Showdown_WindEffect(hit));
+            skillBox = Instantiate(SkillSet[3], Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position,0.5f) + player.transform.forward, Quaternion.identity);
+            StartCoroutine(Showdown_WindEffect());
         }
         makeShowdownkill = false;
         skillLaunched = false;
     }
-    private IEnumerator Showdown_WindEffect(RaycastHit _hit)
+    private IEnumerator Showdown_WindEffect()
     {
+        RaycastHit hit = crosshairray.hit;
         float _t = 0f;
-        Vector3 _originVel = skillBox.GetComponent<Rigidbody>().velocity;
         while (_t < 10f)
         {
             _t += Time.deltaTime;
-            Vector3 toTarget = (_hit.point - transform.position).normalized;
-            skillBox.GetComponent<Rigidbody>().velocity = toTarget * _originVel.magnitude;
+            Vector3 toTarget = (hit.point - transform.position).normalized; // 포톤에 올릴때 크로스헤어가 아니라 상대에게로 바꾸어야함
+            skillBox.GetComponent<Rigidbody>().velocity = toTarget * showdownForce/2;
             yield return null;
         }
     }
@@ -679,7 +657,7 @@ public class SkillsManager : MonoBehaviour
     }
     #region 카운트
 
-    private int showdownCount = 0;
+    [SerializeField] private int showdownCount = 0;
     public void ShowdownCountUp()
     {
         showdownCount++;
