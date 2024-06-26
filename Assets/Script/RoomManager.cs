@@ -11,8 +11,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject player;
     [Space]
     public Transform spawnPos;
-    [Space]
-    public GameObject roomCam;
+ //   [Space]
+ ////   public GameObject roomCam;
     [Space]
     public GameObject nameUI;
     public GameObject connectingUI;
@@ -48,7 +48,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log("We're Connected and in a room now");
 
-        roomCam.SetActive(false);
+       // roomCam.SetActive(false);
 
         SpawnPlayer();
     }
