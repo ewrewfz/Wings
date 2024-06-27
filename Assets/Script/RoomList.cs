@@ -9,7 +9,7 @@ public class RoomList : MonoBehaviourPunCallbacks
 {
     public static RoomList instance;
 
-    public GameObject roomManagerGameobject;
+    //public GameObject roomManagerGameobject;
     public RoomManager roomManager;
 
 
@@ -52,13 +52,16 @@ public class RoomList : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-       if(cachedRoomList.Count <= 0)
+        print("1");
+        if(cachedRoomList.Count <= 0)
         {
             cachedRoomList = roomList;
+            print("2");
         }
-       else
+        else
         {
-            foreach(var room in roomList)
+            print("3");
+            foreach (var room in roomList)
             {
                 for(int i=0; i<cachedRoomList.Count; i++)
                 {
@@ -87,11 +90,15 @@ public class RoomList : MonoBehaviourPunCallbacks
     {
         foreach(Transform roomItem in roomListParent)
         {
+            print("4");
             Destroy(roomItem.gameObject);
+            print("5");
         }
 
         foreach(var room in cachedRoomList)
         {
+            print("6");
+
             GameObject roomItem = Instantiate(roomListPrefab, roomListParent);
 
             roomItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = room.Name;
@@ -104,7 +111,8 @@ public class RoomList : MonoBehaviourPunCallbacks
     public void JoinRoomByName(string _name)
     {
         roomManager.roomNameToJoin = _name;
-        roomManagerGameobject.SetActive(true);
+        //roomManagerGameobject.SetActive(true);
         gameObject.SetActive(false);
+        PhotonNetwork.JoinRoom(roomManager.roomNameToJoin);
     }   
 }
