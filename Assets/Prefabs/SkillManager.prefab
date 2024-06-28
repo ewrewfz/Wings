@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2485050085039912914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5497220704639930160}
+  - component: {fileID: 3465741559921610080}
+  m_Layer: 0
+  m_Name: SkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5497220704639930160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485050085039912914}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.62, y: 19.5, z: -4.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3465741559921610080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485050085039912914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7efbd277013b4b44ad5e1d0e8bfd0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleSkillPrefab:
+  - {fileID: 5687270235789793220, guid: ed0bea04b26f9c74f9f6f01a83a9aace, type: 3}
+  - {fileID: 2732017278556919038, guid: 908140f580b1d96428ef40d4aadd7776, type: 3}
+  - {fileID: 4393304383634110571, guid: 140349868ffafea4ea5eb14aeba10fe0, type: 3}
+  - {fileID: 3346749948700806406, guid: 8be67c42650c73245a499359de214b8e, type: 3}
+  keydownSkillPrefab:
+  - {fileID: 5705689390298006194, guid: 82719d97ae784af4e8132df17f1f1254, type: 3}
+  - {fileID: 7647743207130228644, guid: aedd4767f0fb8e94dab7aaedd9b5466c, type: 3}
+  - {fileID: 361624405163453821, guid: 75c44b92b69b09240b7b82fc60426a9a, type: 3}
+  - {fileID: 3581204593278568577, guid: 2a9e6b5a4795b9b41b979f577182e15d, type: 3}
+  throwSkillPrefab:
+  - {fileID: 1304277438375901949, guid: 523d4d6cdc12e46489cdf14ac7e75ee2, type: 3}
+  - {fileID: 7809936964161835199, guid: 193644a2ba10aa34aa4ac0cbd0e41fa0, type: 3}
+  - {fileID: 6387864744043933416, guid: 01de61c45940bcf49b78fa62e4f50a3b, type: 3}
+  - {fileID: 3040706168545795670, guid: 1e37cfcb11c242e45ab213711b505608, type: 3}
+  ultimateSkillPrefab:
+  - {fileID: 842655495491984725, guid: 5385ea4028ada5e4eabe08e87e9af5f0, type: 3}
+  - {fileID: 8099068254799005585, guid: aa072931303db134f8faf0ced57121d8, type: 3}
+  - {fileID: 5341122865899218607, guid: fb21156971bbb734e97d336a9b8c7747, type: 3}
+  - {fileID: 656621594647593816, guid: 7137b423a389b3c4ba87075301f3bd7c, type: 3}
+  SkillSet:
+  - {fileID: 5687270235789793220, guid: ed0bea04b26f9c74f9f6f01a83a9aace, type: 3}
+  - {fileID: 5687270235789793220, guid: ed0bea04b26f9c74f9f6f01a83a9aace, type: 3}
+  - {fileID: 2732017278556919038, guid: 908140f580b1d96428ef40d4aadd7776, type: 3}
+  - {fileID: 656621594647593816, guid: 7137b423a389b3c4ba87075301f3bd7c, type: 3}
+  skillUI: {fileID: 0}
+  skillLaunched: 0
+  PreSkillLaunched: 0
+  crosshairray: {fileID: 0}
+  hmdParent: {x: 0, y: 0, z: 0}
+  distanceThreshold: 1
+  skillSpawnDistance: 10
+  skillForce: 30
+  skillDuration: 2
+  rightFingerTr:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  leftFingerTr:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
+  ThreeGo: 3
+  dashDistance: 6
+  chargeTime: 3
+  handDisDash: 0.02
+  time_holding: 5
+  time_step: 0.2
+  throwForce: 80
+  makeShowdownkill: 0
+  showtimeDelay: 3
+  showdownForce: 50
+  preshowDis: 0.3
+  showDis: 0.2
+  showdownAfterEffect: {fileID: 7619783646628834398, guid: ec7e036eabbbf774faece31f88f51727,
+    type: 3}
+  showdownCount: 0
