@@ -13,6 +13,7 @@ TagManager:
   - SamplesInfoPanel
   - L_Palm
   - crosshair
+  - body
   layers:
   - Default
   - TransparentFX

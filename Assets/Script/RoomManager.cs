@@ -9,13 +9,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager instance;
 
     public GameObject player;
+    private GameObject palyerD;
     [Space]
     public Transform spawnPos;
  //   [Space]
  ////   public GameObject roomCam;
     [Space]
     public GameObject nameUI;
-    public GameObject connectingUI;
 
     private string nickName = "unnamed";
 
@@ -27,6 +27,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
         instance = this;
     }
 
+    private void Start()
+    {
+        palyerD = Instantiate(player, new Vector3(-0.8f, -0.8f, -0.3f), Quaternion.identity);
+    }
     public void ChangeNickName(string _name)
     {
         nickName = _name;
@@ -40,7 +44,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //OnJoinedRoom();
 
         nameUI.SetActive(false);
-        connectingUI.SetActive(true);
     }
 
 
@@ -52,8 +55,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         // roomCam.SetActive(false);
         //PhotonNetwork.LoadLevel("Lobby");
-        player.transform.position = spawnPos.position;
-        
+        //player.transform.position = spawnPos.position;
+        //palyerD.transform.position = spawnPos.position;
+        Destroy(palyerD);
+        PhotonNetwork.Instantiate(player.name, spawnPos.position, Quaternion.identity);
     }
 
     public void SpawnPlayer()
