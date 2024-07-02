@@ -15,11 +15,13 @@ public class CrosshairRay : MonoBehaviour
     private bool onCrosshair = false;
     //private LineRenderer line;
 
-    private void Start()
+    private void FixedUpdate()
     {
+        if (layerMask != 0) { return; }
+        print("크로스헤어 소환");
         layerMask = ((1 << LayerMask.NameToLayer("Skill")) | (1 << LayerMask.NameToLayer("Hand"))); //스킬은 통과
         layerMask = ~layerMask;
-        cross = Instantiate(crosshair);
+        cross = Instantiate(crosshair, Vector3.zero, Quaternion.identity);
         skillDistance = 50f;
         //line = GetComponent<LineRenderer>();
         crosshairColor = cross.GetComponent<SpriteRenderer>();

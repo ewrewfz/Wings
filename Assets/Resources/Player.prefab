@@ -2674,7 +2674,7 @@ MonoBehaviour:
   hmdParent: {x: 0, y: 0, z: 0}
   crosshair: {fileID: 6711179295065893594, guid: 1b7a301ab1828ae48b3c73fb4c022e53,
     type: 3}
-  skillDistance: 0
+  skillDistance: 50
 --- !u!120 &1209667851944444098
 LineRenderer:
   serializedVersion: 2
@@ -11411,9 +11411,6 @@ MonoBehaviour:
   _transformFeatureConfigs:
     _values:
     - _mode: 0
-      _feature: 5
-      _state: 17
-    - _mode: 0
       _feature: 4
       _state: 14
     - _mode: 0
@@ -11422,6 +11419,9 @@ MonoBehaviour:
     - _mode: 0
       _feature: 2
       _state: 8
+    - _mode: 0
+      _feature: 6
+      _state: 18
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
@@ -23657,7 +23657,7 @@ GameObject:
   - component: {fileID: 1053380106216520582}
   - component: {fileID: 4141411026795600387}
   - component: {fileID: 6743713830924582020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: body
   m_Icon: {fileID: 0}
@@ -24514,9 +24514,6 @@ MonoBehaviour:
   _transformFeatureConfigs:
     _values:
     - _mode: 0
-      _feature: 5
-      _state: 17
-    - _mode: 0
       _feature: 4
       _state: 14
     - _mode: 0
@@ -24525,6 +24522,9 @@ MonoBehaviour:
     - _mode: 0
       _feature: 3
       _state: 11
+    - _mode: 0
+      _feature: 6
+      _state: 18
   _transformConfig:
     PositionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 0, y: 0, z: 0}
