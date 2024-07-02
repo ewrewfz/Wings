@@ -13,7 +13,7 @@ public class SkillsManager : MonoBehaviour
         Fire,
         Ice,
         Lightning,
-        None
+        Wind
     }
     public GameObject[] singleSkillPrefab;
     public GameObject[] keydownSkillPrefab;
@@ -35,7 +35,7 @@ public class SkillsManager : MonoBehaviour
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
     }
-    bool _a = true;
+    bool _a = true; //코루틴이 계속 되는걸 막기위해 만듬, update에 있기때문에
     private void Update()
     {
         if (threeGo < 3 && _a)
@@ -62,7 +62,7 @@ public class SkillsManager : MonoBehaviour
                 singleSkill = singleSkillPrefab[2];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[2];
                 break;
-            case Property.None:
+            case Property.Wind:
                 singleSkill = singleSkillPrefab[3];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[3];
                 break;
@@ -90,7 +90,7 @@ public class SkillsManager : MonoBehaviour
                 Ac_KeydownSkill += Keydown_Ele;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[6];
                 break;
-            case Property.None:
+            case Property.Wind:
                 keydownSkill = keydownSkillPrefab[3];
                 Ac_KeydownSkill += Keydown_Wind;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[7];
@@ -116,7 +116,7 @@ public class SkillsManager : MonoBehaviour
                 throwSkill = throwSkillPrefab[2];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[10];
                 break;
-            case Property.None:
+            case Property.Wind:
                 throwSkill = throwSkillPrefab[3];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[11];
                 break;
@@ -144,7 +144,7 @@ public class SkillsManager : MonoBehaviour
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[14];
                 break;
-            case Property.None:
+            case Property.Wind:
                 ultimateSkill = ultimateSkillPrefab[3];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[15];
@@ -313,6 +313,10 @@ public class SkillsManager : MonoBehaviour
             StartCoroutine(DestroySkillAfterDuration()); //포톤뷰 호스트 -> 클라
         }
     }
+    public void RESingleSkill(Property property) //초기화용
+    {
+        SkillSet[0] = SingleSkill(property);
+    }
 
     //public void KeydownSkill()
     //{
@@ -331,6 +335,11 @@ public class SkillsManager : MonoBehaviour
     public void UseKeydownSkill()
     {
         Ac_KeydownSkill();
+    }
+    public void REKeydown(Property property) // 초기화용
+    {
+        Ac_KeydownSkill = delegate { };
+        SkillSet[1] = KeydownSkill(property);
     }
 
     [SerializeField] private float time_holding = 5f; //유지력
@@ -458,6 +467,12 @@ public class SkillsManager : MonoBehaviour
     //================================
     #region 쓰로우
     [SerializeField] private float throwForce = 80.0f;
+
+    public void REThrow(Property property) // 초기화용
+    {
+        SkillSet[2] = ThrowSkill(property);
+    }
+
     public void PreThrowSkill()
     {
         //날리기 전 사전 손동작 스킬
@@ -523,6 +538,11 @@ public class SkillsManager : MonoBehaviour
     public void UseShowdownSkill()
     {
         Ac_ShowdownSkill();
+    }
+    public void REShowdown(Property property) // 초기화용
+    {
+        Ac_ShowdownSkill = delegate { };
+        SkillSet[3] = UltimateSkill(property);
     }
     public void PreShowdown()
     {

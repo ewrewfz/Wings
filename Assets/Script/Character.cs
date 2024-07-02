@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : Player
 {
     private string characterName;
-    [SerializeField] private SkillUI skillUI;
+    public SkillUI skillUI;
     private Player myplayer;
     private void Start()
     {

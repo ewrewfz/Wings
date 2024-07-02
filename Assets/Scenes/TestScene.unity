@@ -190,7 +190,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 7902867984893738297, guid: dc01078f975fde647aeb5cf7074b7ff3, type: 3}
-  spawnPos: {fileID: 1557014515}
+  spawnPos:
+  - {fileID: 1557014515}
+  - {fileID: 97733492}
+  - {fileID: 857285231}
+  - {fileID: 1252165035}
 --- !u!4 &103590536
 Transform:
   m_ObjectHideFlags: 0

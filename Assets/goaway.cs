@@ -10,12 +10,11 @@ public class goaway : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        //if (collider.gameObject.CompareTag("body"))
-        //{
-        //    print("up");
-        //    NotinmybackyardCnt++;
-        //}
-        NotinmybackyardCnt++;
+        if (collider.gameObject.CompareTag("body"))
+        {
+            print("up");
+            NotinmybackyardCnt++;
+        }
         if (NotinmybackyardCnt == 2)
         {
             PhotonNetwork.LoadLevel("TestScene");
