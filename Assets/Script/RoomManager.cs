@@ -57,8 +57,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //PhotonNetwork.LoadLevel("Lobby");
         //player.transform.position = spawnPos.position;
         //palyerD.transform.position = spawnPos.position;
-        PhotonNetwork.Instantiate(player.name, spawnPos.position, Quaternion.identity);
-        Destroy(palyerD);
+
+        PhotonNetwork.LoadLevel(2);
+
+        //PhotonNetwork.Instantiate(player.name, spawnPos.position, Quaternion.identity);
+        //Destroy(palyerD);
     }
 
     public void SpawnPlayer()

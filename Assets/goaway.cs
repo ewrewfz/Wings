@@ -15,12 +15,11 @@ public class goaway : MonoBehaviour
             print("up");
             NotinmybackyardCnt++;
         }
-        if (NotinmybackyardCnt == 2)
-        {
-            PhotonNetwork.LoadLevel("TestScene");
-            //RoomManager.instance.SpawnPlayer();
-
-        }
+        //if (NotinmybackyardCnt == 2)
+        //{
+        //    PhotonNetwork.LoadLevel("TestScene");
+        //    //RoomManager.instance.SpawnPlayer();
+        //}
     }
 
 
