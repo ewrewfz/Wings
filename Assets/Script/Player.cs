@@ -47,5 +47,4 @@ public class Player : MonoBehaviour
         HP = _hp;
         MP = _mp;
     }
-
 }

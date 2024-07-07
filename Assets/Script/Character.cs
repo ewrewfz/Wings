@@ -26,4 +26,13 @@ public class Character : Player
             skillUI.UpdateMPSlide(myplayer.MP);
         }
     }
+
+    public void OnDamage(float damage)
+    {
+        if (myplayer.HP > 0)
+        {
+            myplayer.HP -= damage;
+            skillUI.UpdateHPSlide(myplayer.HP);
+        }
+    }
 }

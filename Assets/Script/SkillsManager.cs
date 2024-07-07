@@ -15,6 +15,15 @@ public class SkillsManager : MonoBehaviour
         Lightning,
         Wind
     }
+
+    public enum Type
+    {
+        Single,
+        KeyDown,
+        Throw,
+        Showdown
+    }
+
     public GameObject[] singleSkillPrefab;
     public GameObject[] keydownSkillPrefab;
     public GameObject[] throwSkillPrefab;
