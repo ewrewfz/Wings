@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9c3d545630dd944b6e7a88aff04e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NotinmybackyardCnt: 0
+  NotinmybackyardCnt: 2
 --- !u!54 &1454174786
 Rigidbody:
   m_ObjectHideFlags: 0

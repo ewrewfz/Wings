@@ -15,6 +15,15 @@ public class SkillsManager : MonoBehaviour
         Lightning,
         Wind
     }
+
+    public enum Type
+    {
+        Single,
+        KeyDown,
+        Throw,
+        Showdown
+    }
+
     public GameObject[] singleSkillPrefab;
     public GameObject[] keydownSkillPrefab;
     public GameObject[] throwSkillPrefab;
@@ -22,7 +31,9 @@ public class SkillsManager : MonoBehaviour
 
     public List<GameObject> SkillSet = new List<GameObject>();
     public SkillUI skillUI;
+    public Dictionary<int, Skills> skillDic = new Dictionary<int, Skills>();
 
+    Skills awef;
     private void Awake()
     {
         SkillSet.Add(SingleSkill(RandomProperty()));
@@ -34,6 +45,19 @@ public class SkillsManager : MonoBehaviour
         //lefthandPos = GameObject.FindWithTag("L_Hand").transform.gameObject;
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
+
+      //skillDic.Add(0, new Skills("FireSingle", Prefab, Damage,ManaCost,CoolTime, Property, Type, SkillSpecialEffect));
+        skillDic.Add(1, new Skills("FireSingle", singleSkillPrefab[0], 4,5,5,Property.Fire, Type.Single, new SkillSpecialEffect.FireEffect(1.0f, 1f)));
+        skillDic.Add(2, new Skills("IceSingle", singleSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Single, new SkillSpecialEffect.IceEffect(1.0f, 3f)));
+        skillDic.Add(3, new Skills("LighteningSingle", singleSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Single, new SkillSpecialEffect.LightningEffect(1.0f, 3f)));
+        skillDic.Add(4, new Skills("WindSingle", singleSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Single, new SkillSpecialEffect.WindEffect(1.0f, 3f)));
+
+        skillDic.TryGetValue(1, out awef);
+        awef.damage *= 1.2f;
+        awef.specialEffect.ChangeValue(3, 7);
+
+
+        
     }
     bool _a = true; //코루틴이 계속 되는걸 막기위해 만듬, update에 있기때문에
     private void Update()
@@ -41,8 +65,11 @@ public class SkillsManager : MonoBehaviour
         if (threeGo < 3 && _a)
         {
             _a = false;
-             StartCoroutine(ChargeDash());
+            StartCoroutine(ChargeDash());
         }
+
+        awef = skillDic[1];
+        print(awef.damage);
     }
 
     private GameObject SingleSkill(Property property)
