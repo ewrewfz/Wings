@@ -3,14 +3,15 @@ using UnityEngine;
 public interface ISpecialEffect
 {
     void ApplyEffect();
+    void ChangeValue(float _duration, float _damage);
 }
 
 public class SkillSpecialEffect : MonoBehaviour
 {
     public class FireEffect : ISpecialEffect
     {
-        private float burnDuration;
-        private float burnDamage;
+        public float burnDuration;
+        public float burnDamage;
 
         public FireEffect(float _duration, float _damage)
         {
@@ -20,38 +21,58 @@ public class SkillSpecialEffect : MonoBehaviour
 
         public void ApplyEffect()
         {
-            
+
+        }
+        public void ChangeValue(float _duration, float _damage)
+        {
+            burnDuration = _duration;
+            burnDamage = _damage;
         }
     }
 
     public class IceEffect : ISpecialEffect
     {
-        private float addCool;
+        public float addDuration;
+        public float addCool;
 
-        public IceEffect(float _addCool)
+        public IceEffect(float _duration, float _addCool)
         {
+            addDuration = _duration;
             addCool = _addCool;
         }
 
         public void ApplyEffect()
         {
-            
+
+        }
+        public void ChangeValue(float _duration, float _addCool)
+        {
+            addDuration = _duration;
+            addCool = _addCool;
         }
     }
 
     public class LightningEffect : ISpecialEffect
     {
+        public float substractDuration;
         private float substractCool;
 
-        public LightningEffect(float _substractCool)
+        public LightningEffect(float _substractDuration, float _substractCool)
         {
+            substractDuration = _substractDuration;
             substractCool = _substractCool;
         }
 
         public void ApplyEffect()
         {
-            
+
         }
+        public void ChangeValue(float _substractDuration, float _substractCool)
+        {
+            substractDuration = _substractDuration;
+            substractCool = _substractCool;
+        }
+
     }
 
     public class WindEffect : ISpecialEffect
@@ -68,6 +89,11 @@ public class SkillSpecialEffect : MonoBehaviour
         public void ApplyEffect()
         {
 
+        }
+        public void ChangeValue(float _duration, float _manaburn)
+        {
+            burnDuration = _duration;
+            manaburn = _manaburn;
         }
     }
 }

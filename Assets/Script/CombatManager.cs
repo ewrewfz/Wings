@@ -21,7 +21,6 @@ public class CombatManager : MonoBehaviour
         Finish
     }
 
-
     private void Start()
     {
         state = CombatState.Ready;
@@ -29,6 +28,9 @@ public class CombatManager : MonoBehaviour
         //호스트와 클라이언트를 찾아 번호 재 지정 or 호스트는 0번 나머지는 레인지로 넣기
         playerReady = new bool[characterList.Count]; //플레이어 ready와 연결 해야함
         StartCoroutine(WaitReadyTime());
+
+
+        
     }
 
     private void Update()
