@@ -67,7 +67,7 @@ public class SkillsManager : MonoBehaviour
         skillDic.Add(23, new Skills("LighteningThrow", throwSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Throw, new SkillSpecialEffect.LightningEffect(1f, 1f)));
         skillDic.Add(24, new Skills("WindThrow", throwSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Throw, new SkillSpecialEffect.WindEffect(1f, 1f)));
 
-        skillDic.Add(31, new Skills("FireShowdown", showdownSkillPrefab[0], 4, 5, 5, Property.Fire, Type.Showdown, new SkillSpecialEffect.FireEffect(1f, 1f)));
+        skillDic.Add(31, new Skills("FireShowdown", showdownSkillPrefab[0], 400, 5, 5, Property.Fire, Type.Showdown, new SkillSpecialEffect.FireEffect(1f, 1f)));
         skillDic.Add(32, new Skills("IceShowdown", showdownSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Showdown, new SkillSpecialEffect.IceEffect(1f, 1f)));
         skillDic.Add(33, new Skills("LighteningShowdown", showdownSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Showdown, new SkillSpecialEffect.LightningEffect(1f, 1f)));
         skillDic.Add(34, new Skills("WindShowdown", showdownSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Showdown, new SkillSpecialEffect.WindEffect(1f, 1f)));

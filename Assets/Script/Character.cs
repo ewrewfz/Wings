@@ -29,10 +29,21 @@ public class Character : Player
 
     public void OnDamage(float damage)
     {
-        if (myplayer.HP > 0)
-        {
+        if (myplayer.HP <= 0)
+            return;
             myplayer.HP -= damage;
             skillUI.UpdateHPSlide(myplayer.HP);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<SkillItem>() != null)
+        {
+            SkillItem skill = collision.gameObject.GetComponent<SkillItem>();
+            OnDamage(skill.damage);
+            if (skill.property == SkillsManager.Property.Fire) //파이어일때만 적용됨
+            {
+                new SkillSpecialEffect.FireEffect(skill.duration, skill.value).ApplyEffect();
+            }
         }
     }
 }
