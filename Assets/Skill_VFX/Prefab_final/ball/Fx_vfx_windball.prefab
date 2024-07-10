@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4644149171515671329}
   - component: {fileID: 1797201271128008493}
   - component: {fileID: 7058898214883749202}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 3965939291400934190}
   - component: {fileID: 2304934975227580677}
   - component: {fileID: 2694970804077898955}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fx_vfx_windball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9840,7 +9840,7 @@ GameObject:
   - component: {fileID: 1635143325924196296}
   - component: {fileID: 3990473649976953379}
   - component: {fileID: 8597756126917139768}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

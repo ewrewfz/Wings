@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1749281743094141790}
   - component: {fileID: 456197873200424702}
   - component: {fileID: 7460378352499357030}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 4350972044668220424}
   - component: {fileID: 7911412553172661057}
   - component: {fileID: 8987495303696767816}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

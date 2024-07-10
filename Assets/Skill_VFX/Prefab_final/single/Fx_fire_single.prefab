@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7214665750049751850}
   - component: {fileID: 3536692928549476608}
   - component: {fileID: 7851865870924668175}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 3999740729396911834}
   - component: {fileID: 7365397508117044129}
   - component: {fileID: 3178450437764558594}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fire_Ora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9865,7 +9865,7 @@ GameObject:
   - component: {fileID: 1723270880679331726}
   - component: {fileID: 7399568840032528294}
   - component: {fileID: 5457564176649854417}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Fx_fire_single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14813,7 +14813,7 @@ GameObject:
   - component: {fileID: 5777643941946730933}
   - component: {fileID: 5647103966600843129}
   - component: {fileID: 8140774825115740601}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

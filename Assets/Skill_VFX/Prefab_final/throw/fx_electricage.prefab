@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1554111224642988235}
   - component: {fileID: 7321749166330995751}
   - component: {fileID: 1034182846924692065}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4989,7 +4989,7 @@ GameObject:
   - component: {fileID: 1262382998855858220}
   - component: {fileID: 5185754348294992936}
   - component: {fileID: 623784340439331692}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9905,7 +9905,7 @@ GameObject:
   - component: {fileID: 8043574892286859665}
   - component: {fileID: 7815734285584776766}
   - component: {fileID: 4355487847099057616}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_electricage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14870,7 +14870,7 @@ GameObject:
   - component: {fileID: 5916528287362063566}
   - component: {fileID: 4353565815009011331}
   - component: {fileID: 7685405602268137562}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19813,7 +19813,7 @@ GameObject:
   - component: {fileID: 916399517784024703}
   - component: {fileID: 3644455094584775201}
   - component: {fileID: 4734465243648101785}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_electricage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24784,7 +24784,7 @@ GameObject:
   - component: {fileID: 8320860272097903304}
   - component: {fileID: 4317711512286518157}
   - component: {fileID: 4190214989818408923}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29762,7 +29762,7 @@ GameObject:
   - component: {fileID: 1365822923507258666}
   - component: {fileID: 3557315576422015220}
   - component: {fileID: 7446995836406011781}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}

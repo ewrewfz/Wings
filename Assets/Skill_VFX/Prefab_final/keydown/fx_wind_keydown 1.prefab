@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1214776222431133212}
   - component: {fileID: 3844683964098982995}
   - component: {fileID: 5716162397630127426}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_wind_keydown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 6692612242355202984}
   - component: {fileID: 5408156540108605974}
   - component: {fileID: 7899727463058198578}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9818,7 +9818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7482641864319460723}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fx_wind_keydown 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 1681834686774426532}
   - component: {fileID: 181015347569428490}
   - component: {fileID: 5557491545381432454}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

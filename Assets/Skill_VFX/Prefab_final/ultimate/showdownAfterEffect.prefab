@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7068826437583958574}
   - component: {fileID: 7619783646628834398}
   - component: {fileID: 6679478400132274701}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: showdownAfterEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

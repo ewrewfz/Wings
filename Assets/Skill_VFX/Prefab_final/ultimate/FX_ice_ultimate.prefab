@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4050740814499509267}
   - component: {fileID: 266903134178226962}
   - component: {fileID: 498784648485224156}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 5401928905422117828}
   - component: {fileID: 4980875545253908581}
   - component: {fileID: 6901395573925501234}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9859,7 +9859,7 @@ GameObject:
   - component: {fileID: 1105438709589284430}
   - component: {fileID: 2319615862725092818}
   - component: {fileID: 7782345673876546176}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14765,7 +14765,7 @@ GameObject:
   - component: {fileID: 7782764598247316174}
   - component: {fileID: 4450925865230753501}
   - component: {fileID: 7869645199458663903}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19672,7 +19672,7 @@ GameObject:
   - component: {fileID: 8145339010961920915}
   - component: {fileID: 1639809463122604276}
   - component: {fileID: -1556364636018636513}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: FX_ice_ultimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
