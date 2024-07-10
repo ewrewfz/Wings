@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1283370646449921703}
   - component: {fileID: 2736036536031057913}
   - component: {fileID: 6101326349090342249}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4936,7 +4936,7 @@ GameObject:
   - component: {fileID: 4459036786120696456}
   - component: {fileID: 8789563269059942062}
   - component: {fileID: 7586535428355704425}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fx_fire_Ultimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9883,7 +9883,7 @@ GameObject:
   - component: {fileID: 9164306427417989242}
   - component: {fileID: 5473682069028010681}
   - component: {fileID: 5131733780895357939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14807,7 +14807,7 @@ GameObject:
   - component: {fileID: 4134242212642390008}
   - component: {fileID: 281955207542446286}
   - component: {fileID: 3711016627994526401}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19722,7 +19722,7 @@ GameObject:
   - component: {fileID: 1116655936244062988}
   - component: {fileID: 5764349169478742250}
   - component: {fileID: 1645342364232939268}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: around (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24637,7 +24637,7 @@ GameObject:
   - component: {fileID: 4627307085131024137}
   - component: {fileID: 7785888012475437402}
   - component: {fileID: 2856567255354642810}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

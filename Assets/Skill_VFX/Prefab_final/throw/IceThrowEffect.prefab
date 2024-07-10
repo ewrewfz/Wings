@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1780354078703079655}
   - component: {fileID: 553683238267112123}
   - component: {fileID: 1066818991764793326}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4926,7 +4926,7 @@ GameObject:
   - component: {fileID: 7731458012303290115}
   - component: {fileID: 2249958970123568888}
   - component: {fileID: 240427098544081714}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Basic_particle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9832,7 +9832,7 @@ GameObject:
   - component: {fileID: 1264333504967287241}
   - component: {fileID: 6078274827225169449}
   - component: {fileID: 2032341556682364102}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14805,7 +14805,7 @@ GameObject:
   - component: {fileID: 4889577988739500911}
   - component: {fileID: 4366203766696181342}
   - component: {fileID: 5444130882530910812}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19747,7 +19747,7 @@ GameObject:
   - component: {fileID: 2069346370498462312}
   - component: {fileID: 6677291896273950448}
   - component: {fileID: 3587553249127175615}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24643,7 +24643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191522391882720405}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: 'fx_explosionsmoke (Missing Prefab with guid: 0a1fec9ea4348664982fbc9a464c8d83)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24676,7 +24676,7 @@ GameObject:
   - component: {fileID: 4899081865546550773}
   - component: {fileID: 8264030011415021914}
   - component: {fileID: 1193984014826119072}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_Iceage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29621,7 +29621,7 @@ GameObject:
   - component: {fileID: 1356816043615959283}
   - component: {fileID: 6454334664056897303}
   - component: {fileID: 140812691043841160}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Basic_particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34644,7 +34644,7 @@ GameObject:
   - component: {fileID: 2901386515509148279}
   - component: {fileID: 5972475389757096719}
   - component: {fileID: 149912512787779285}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Fx_vfx_iceball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39567,7 +39567,7 @@ GameObject:
   - component: {fileID: 8780618027352131195}
   - component: {fileID: 2497489267954980788}
   - component: {fileID: 1902858849882240306}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_ice_explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44496,7 +44496,7 @@ GameObject:
   - component: {fileID: 3587167298330516500}
   - component: {fileID: 635541039268213563}
   - component: {fileID: 1685369746318013776}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: IceThrowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44576,7 +44576,7 @@ GameObject:
   - component: {fileID: 1704826168314719036}
   - component: {fileID: 8296928083628526474}
   - component: {fileID: 6795793379963923308}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731458012303290115}
   - component: {fileID: 2249958970123568888}
   - component: {fileID: 240427098544081714}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,7 +4917,7 @@ GameObject:
   - component: {fileID: 1356816043615959283}
   - component: {fileID: 6454334664056897303}
   - component: {fileID: 140812691043841160}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9940,7 +9940,7 @@ GameObject:
   - component: {fileID: 2901386515509148279}
   - component: {fileID: 5972475389757096719}
   - component: {fileID: 149912512787779285}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fx_vfx_iceball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

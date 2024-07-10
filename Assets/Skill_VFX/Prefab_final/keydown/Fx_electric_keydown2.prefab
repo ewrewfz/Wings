@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1636167593497403279}
   - component: {fileID: 5332725123303087602}
   - component: {fileID: 6044611936778599443}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Fx_electric_keydown2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
   eleBall: {fileID: 9036134767555986119}
   ballNum: 4
   rotateSpeed: 60
+  diversionSpeed: 0
 --- !u!198 &1636167593497403279
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4958,7 +4959,7 @@ GameObject:
   - component: {fileID: 9036134767555986119}
   - component: {fileID: 2408966125316865319}
   - component: {fileID: 4656599597281969767}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9882,7 +9883,7 @@ GameObject:
   - component: {fileID: 3389758403839953741}
   - component: {fileID: 2795421551410576711}
   - component: {fileID: 6955081230959417913}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: around
   m_TagString: Untagged
   m_Icon: {fileID: 0}

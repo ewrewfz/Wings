@@ -11,18 +11,18 @@ public class CrosshairRay : MonoBehaviour
     private SpriteRenderer crosshairColor;
     public float skillDistance;
     private GameObject cross;
-    private int layerMask;
+    //private int layerMask;
     private bool onCrosshair = false;
     //private LineRenderer line;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        if (layerMask != 0) { return; }
+        //if (layerMask != 0) { return; }
         print("크로스헤어 소환");
-        layerMask = ((1 << LayerMask.NameToLayer("Skill")) | (1 << LayerMask.NameToLayer("Hand"))); //스킬은 통과
-        layerMask = ~layerMask;
+        //layerMask = ((1 << LayerMask.NameToLayer("Skill")) | (1 << LayerMask.NameToLayer("Hand"))); //스킬은 통과
+        //layerMask = ~layerMask;
         cross = Instantiate(crosshair, Vector3.zero, Quaternion.identity);
-        skillDistance = 50f;
+        skillDistance = 500f;
         //line = GetComponent<LineRenderer>();
         crosshairColor = cross.GetComponent<SpriteRenderer>();
         //cross.gameObject.SetActive(false);
@@ -55,7 +55,7 @@ public class CrosshairRay : MonoBehaviour
     {
         hmdWorld = hmdParent + transform.position;
         //Rayast(광선의 시작 지점, 광선이 뻗어나갈 방향 , 충돌 정보(out hit), 광선의 사정거리)
-        if (Physics.Raycast(hmdWorld, transform.forward, out hit, skillDistance, layerMask))
+        if (Physics.Raycast(hmdWorld, transform.forward, out hit, skillDistance))
         {
             SetCrosshairRotation(hit);
             cross.transform.position = hit.point;

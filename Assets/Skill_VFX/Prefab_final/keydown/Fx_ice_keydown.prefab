@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3903522973283354680}
   - component: {fileID: 578938161836882379}
   - component: {fileID: 974233766334174642}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Basic_particle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 1072983351480972838}
   - component: {fileID: 7826226789923574743}
   - component: {fileID: 5748227251782274722}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9805,7 +9805,7 @@ GameObject:
   - component: {fileID: 4210026669505977282}
   - component: {fileID: 6081706301932254625}
   - component: {fileID: 1798619136581103428}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14729,7 +14729,7 @@ GameObject:
   - component: {fileID: 2135547937323435853}
   - component: {fileID: 4021088202604862832}
   - component: {fileID: 7782821167963165055}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Fx_ice_keydown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

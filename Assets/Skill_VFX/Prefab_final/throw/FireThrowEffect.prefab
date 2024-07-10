@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5862578785175549356}
   - component: {fileID: 3999864450047793150}
   - component: {fileID: 6854712482295121586}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_fireage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4956,7 +4956,7 @@ GameObject:
   - component: {fileID: 5988022233896071727}
   - component: {fileID: 3569415472099781867}
   - component: {fileID: 5196861596659654768}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: FireThrowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5036,7 +5036,7 @@ GameObject:
   - component: {fileID: 7195908970495021225}
   - component: {fileID: 6943682944297028416}
   - component: {fileID: 3791239258442931302}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9978,7 +9978,7 @@ GameObject:
   - component: {fileID: 7646843175645925058}
   - component: {fileID: 461326554571459246}
   - component: {fileID: 3528641204122517625}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14893,7 +14893,7 @@ GameObject:
   - component: {fileID: 6271520057956952256}
   - component: {fileID: 2270357179549342873}
   - component: {fileID: 6917944787989076489}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19866,7 +19866,7 @@ GameObject:
   - component: {fileID: 4378732051564230181}
   - component: {fileID: 4737117810568962590}
   - component: {fileID: 8751866173596378559}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_straint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24844,7 +24844,7 @@ GameObject:
   - component: {fileID: 6399606805427666771}
   - component: {fileID: 6008026084326403855}
   - component: {fileID: 7684630687807023685}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: fx_ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29817,7 +29817,7 @@ PrefabInstance:
     - target: {fileID: 9178413639022531187, guid: 003baccec7274d34e88d7fc73ba1292c,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29887,7 +29887,7 @@ PrefabInstance:
     - target: {fileID: 2292163079534381983, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2726939355995181092, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}
@@ -29897,7 +29897,7 @@ PrefabInstance:
     - target: {fileID: 2726939355995181092, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4184514702701475002, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}
@@ -29972,7 +29972,7 @@ PrefabInstance:
     - target: {fileID: 7944414099516259042, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9084068322546718420, guid: ad8050ab987ecdf4790bc4070970f9ac,
         type: 3}

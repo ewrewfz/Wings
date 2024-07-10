@@ -27,7 +27,7 @@ public class SkillsManager : MonoBehaviour
     public GameObject[] singleSkillPrefab;
     public GameObject[] keydownSkillPrefab;
     public GameObject[] throwSkillPrefab;
-    public GameObject[] ultimateSkillPrefab;
+    public GameObject[] showdownSkillPrefab;
 
     public List<GameObject> SkillSet = new List<GameObject>();
     public SkillUI skillUI;
@@ -45,19 +45,32 @@ public class SkillsManager : MonoBehaviour
         //lefthandPos = GameObject.FindWithTag("L_Hand").transform.gameObject;
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
+        SetDefaultSkill();
 
-      //skillDic.Add(0, new Skills("FireSingle", Prefab, Damage,ManaCost,CoolTime, Property, Type, SkillSpecialEffect));
-        skillDic.Add(1, new Skills("FireSingle", singleSkillPrefab[0], 4,5,5,Property.Fire, Type.Single, new SkillSpecialEffect.FireEffect(1.0f, 1f)));
-        skillDic.Add(2, new Skills("IceSingle", singleSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Single, new SkillSpecialEffect.IceEffect(1.0f, 3f)));
-        skillDic.Add(3, new Skills("LighteningSingle", singleSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Single, new SkillSpecialEffect.LightningEffect(1.0f, 3f)));
-        skillDic.Add(4, new Skills("WindSingle", singleSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Single, new SkillSpecialEffect.WindEffect(1.0f, 3f)));
+    }
 
-        skillDic.TryGetValue(1, out awef);
-        awef.damage *= 1.2f;
-        awef.specialEffect.ChangeValue(3, 7);
+    private void SetDefaultSkill()
+    {
+        //skillDic.Add(0, new Skills("속성+타입",       Prefab, Damage,ManaCost,CoolTime, 속성,     타입,        SkillSpecialEffect.속성Effect(시간,값));
+        skillDic.Add(1, new Skills("FireSingle", singleSkillPrefab[0], 4, 5, 5, Property.Fire, Type.Single, new SkillSpecialEffect.FireEffect(1f, 1f)));
+        skillDic.Add(2, new Skills("IceSingle", singleSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Single, new SkillSpecialEffect.IceEffect(1f, 1f)));
+        skillDic.Add(3, new Skills("LighteningSingle", singleSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Single, new SkillSpecialEffect.LightningEffect(1f, 1f)));
+        skillDic.Add(4, new Skills("WindSingle", singleSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Single, new SkillSpecialEffect.WindEffect(1f, 1f)));
 
+        skillDic.Add(11, new Skills("FireKeydown", keydownSkillPrefab[0], 4, 5, 5, Property.Fire, Type.KeyDown, new SkillSpecialEffect.FireEffect(1f, 1f)));
+        skillDic.Add(12, new Skills("IceKeydown", keydownSkillPrefab[1], 5, 5, 5, Property.Ice, Type.KeyDown, new SkillSpecialEffect.IceEffect(1f, 1f)));
+        skillDic.Add(13, new Skills("LighteningKeydown", keydownSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.KeyDown, new SkillSpecialEffect.LightningEffect(1f, 1f)));
+        skillDic.Add(14, new Skills("WindKeydown", keydownSkillPrefab[3], 4, 5, 5, Property.Wind, Type.KeyDown, new SkillSpecialEffect.WindEffect(1f, 1f)));
 
-        
+        skillDic.Add(21, new Skills("FireThrow", throwSkillPrefab[0], 4, 5, 5, Property.Fire, Type.Throw, new SkillSpecialEffect.FireEffect(1f, 1f)));
+        skillDic.Add(22, new Skills("IceThrow", throwSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Throw, new SkillSpecialEffect.IceEffect(1f, 1f)));
+        skillDic.Add(23, new Skills("LighteningThrow", throwSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Throw, new SkillSpecialEffect.LightningEffect(1f, 1f)));
+        skillDic.Add(24, new Skills("WindThrow", throwSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Throw, new SkillSpecialEffect.WindEffect(1f, 1f)));
+
+        skillDic.Add(31, new Skills("FireShowdown", showdownSkillPrefab[0], 4, 5, 5, Property.Fire, Type.Showdown, new SkillSpecialEffect.FireEffect(1f, 1f)));
+        skillDic.Add(32, new Skills("IceShowdown", showdownSkillPrefab[1], 5, 5, 5, Property.Ice, Type.Showdown, new SkillSpecialEffect.IceEffect(1f, 1f)));
+        skillDic.Add(33, new Skills("LighteningShowdown", showdownSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Showdown, new SkillSpecialEffect.LightningEffect(1f, 1f)));
+        skillDic.Add(34, new Skills("WindShowdown", showdownSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Showdown, new SkillSpecialEffect.WindEffect(1f, 1f)));
     }
     bool _a = true; //코루틴이 계속 되는걸 막기위해 만듬, update에 있기때문에
     private void Update()
@@ -67,9 +80,6 @@ public class SkillsManager : MonoBehaviour
             _a = false;
             StartCoroutine(ChargeDash());
         }
-
-        awef = skillDic[1];
-        print(awef.damage);
     }
 
     private GameObject SingleSkill(Property property)
@@ -157,22 +167,22 @@ public class SkillsManager : MonoBehaviour
         switch (property)
         {
             case Property.Fire:
-                ultimateSkill = ultimateSkillPrefab[0];
+                ultimateSkill = showdownSkillPrefab[0];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[12];
                 break;
             case Property.Ice:
-                ultimateSkill = ultimateSkillPrefab[1];
+                ultimateSkill = showdownSkillPrefab[1];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[13]  ;
                 break;
             case Property.Lightning:
-                ultimateSkill = ultimateSkillPrefab[2];
+                ultimateSkill = showdownSkillPrefab[2];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[14];
                 break;
             case Property.Wind:
-                ultimateSkill = ultimateSkillPrefab[3];
+                ultimateSkill = showdownSkillPrefab[3];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[15];
                 break;

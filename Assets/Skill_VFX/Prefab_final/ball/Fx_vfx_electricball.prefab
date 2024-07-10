@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6199600753257306428}
   - component: {fileID: 4619067306738673975}
   - component: {fileID: 473726126377817649}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fx_vfx_electricball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4934,7 +4934,7 @@ GameObject:
   - component: {fileID: 3786768610037081442}
   - component: {fileID: 4777407042382085463}
   - component: {fileID: 8223123849690987398}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9956,7 +9956,7 @@ GameObject:
   - component: {fileID: 4929384486198727792}
   - component: {fileID: 5014740128754290792}
   - component: {fileID: 7938171252937868499}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basic_particle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
