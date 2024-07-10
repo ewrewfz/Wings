@@ -29,7 +29,7 @@ public class SkillsManager : MonoBehaviour
     public GameObject[] throwSkillPrefab;
     public GameObject[] showdownSkillPrefab;
 
-    public List<GameObject> SkillSet = new List<GameObject>();
+    public List<Skills> SkillSet = new List<Skills>();
     public SkillUI skillUI;
     public Dictionary<int, Skills> skillDic = new Dictionary<int, Skills>();
 
@@ -46,7 +46,7 @@ public class SkillsManager : MonoBehaviour
         //player = GameObject.FindWithTag("Player").transform.gameObject;
         //characterColl = player.GetComponent<Collider>();
         SetDefaultSkill();
-
+        SetDefaultPlayerSkillSet();
     }
 
     private void SetDefaultSkill()
@@ -72,6 +72,19 @@ public class SkillsManager : MonoBehaviour
         skillDic.Add(33, new Skills("LighteningShowdown", showdownSkillPrefab[2], 5, 5, 5, Property.Lightning, Type.Showdown, new SkillSpecialEffect.LightningEffect(1f, 1f)));
         skillDic.Add(34, new Skills("WindShowdown", showdownSkillPrefab[3], 4, 5, 5, Property.Wind, Type.Showdown, new SkillSpecialEffect.WindEffect(1f, 1f)));
     }
+
+    private void SetDefaultPlayerSkillSet()
+    {
+        for (int i = 0; i < SkillSet.Count; i++)
+        { 
+            SkillSet[0].skillPrefab.GetComponent<SkillItem>().property = SkillSet[0].property;
+            SkillSet[0].skillPrefab.GetComponent<SkillItem>().type = SkillSet[0].type;
+            SkillSet[0].skillPrefab.GetComponent<SkillItem>().damage = SkillSet[0].damage;
+            SkillSet[0].skillPrefab.GetComponent<SkillItem>().duration = SkillSet[0].specialEffect.ReturnDuration();
+            SkillSet[0].skillPrefab.GetComponent<SkillItem>().value = SkillSet[0].specialEffect.ReturnValue();
+        }
+    }
+
     bool _a = true; //코루틴이 계속 되는걸 막기위해 만듬, update에 있기때문에
     private void Update()
     {
@@ -82,53 +95,53 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    private GameObject SingleSkill(Property property)
+    private Skills SingleSkill(Property property)
     {
-        GameObject singleSkill = null;
+        Skills singleSkill = null;
         switch (property)
         {
             case Property.Fire:
-                singleSkill = singleSkillPrefab[0];
+                singleSkill = skillDic[1];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[0];
                 break;
             case Property.Ice:
-                singleSkill = singleSkillPrefab[1];
+                singleSkill = skillDic[2];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[1];
                 break;
             case Property.Lightning:
-                singleSkill = singleSkillPrefab[2];
+                singleSkill = skillDic[3];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[2];
                 break;
             case Property.Wind:
-                singleSkill = singleSkillPrefab[3];
+                singleSkill = skillDic[4];
                 skillUI.set_skills[0].sprite = skillUI.all_skills[3];
                 break;
         }
         return singleSkill;
     }
 
-    private GameObject KeydownSkill(Property property) // 스킬배치를 받고 keydown 에 할당
+    private Skills KeydownSkill(Property property) // 스킬배치를 받고 keydown 에 할당
     {
-        GameObject keydownSkill = null;
+        Skills keydownSkill = null;
         switch (property)
         {
             case Property.Fire:
-                keydownSkill = keydownSkillPrefab[0];
+                keydownSkill = skillDic[11];
                 Ac_KeydownSkill += Keydown_Fire;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[4];
                 break;
             case Property.Ice:
-                keydownSkill = keydownSkillPrefab[1];
+                keydownSkill = skillDic[12];
                 Ac_KeydownSkill += Keydown_Ice;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[5];
                 break;
             case Property.Lightning:
-                keydownSkill = keydownSkillPrefab[2];
+                keydownSkill = skillDic[13];
                 Ac_KeydownSkill += Keydown_Ele;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[6];
                 break;
             case Property.Wind:
-                keydownSkill = keydownSkillPrefab[3];
+                keydownSkill = skillDic[14];
                 Ac_KeydownSkill += Keydown_Wind;
                 skillUI.set_skills[1].sprite = skillUI.all_skills[7];
                 break;
@@ -136,53 +149,53 @@ public class SkillsManager : MonoBehaviour
         return keydownSkill;
     }
 
-    private GameObject ThrowSkill(Property property)
+    private Skills ThrowSkill(Property property)
     {
-        GameObject throwSkill = null;
+        Skills throwSkill = null;
         switch (property)
         {
             case Property.Fire:
-                throwSkill = throwSkillPrefab[0];
+                throwSkill = skillDic[21];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[8];
                 break;
             case Property.Ice:
-                throwSkill = throwSkillPrefab[1];
+                throwSkill = skillDic[22];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[9];
                 break;
             case Property.Lightning:
-                throwSkill = throwSkillPrefab[2];
+                throwSkill = skillDic[23];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[10];
                 break;
             case Property.Wind:
-                throwSkill = throwSkillPrefab[3];
+                throwSkill = skillDic[24];
                 skillUI.set_skills[2].sprite = skillUI.all_skills[11];
                 break;
         }
         return throwSkill;
     }
 
-    private GameObject UltimateSkill(Property property)
+    private Skills UltimateSkill(Property property)
     {
-        GameObject ultimateSkill = null;
+        Skills ultimateSkill = null;
         switch (property)
         {
             case Property.Fire:
-                ultimateSkill = showdownSkillPrefab[0];
+                ultimateSkill = skillDic[31];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[12];
                 break;
             case Property.Ice:
-                ultimateSkill = showdownSkillPrefab[1];
+                ultimateSkill = skillDic[32];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[13]  ;
                 break;
             case Property.Lightning:
-                ultimateSkill = showdownSkillPrefab[2];
+                ultimateSkill = skillDic[33];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[14];
                 break;
             case Property.Wind:
-                ultimateSkill = showdownSkillPrefab[3];
+                ultimateSkill = skillDic[34];
                 Ac_ShowdownSkill += Showdown_Wind;
                 skillUI.set_skills[3].sprite = skillUI.all_skills[15];
                 break;
@@ -336,7 +349,7 @@ public class SkillsManager : MonoBehaviour
             //스킬 나가는 위치 (오른손 끝)
 
             // 스킬 프리팹을 생성하고 지정된 위치에 생성합니다. Quaternion.LookRotation(localForward)
-            skillBox = Instantiate(SkillSet[0], rightFingerTr[0].position, Quaternion.LookRotation(hit.point - rightFingerTr[1].position));//포톤뷰 호스트 ->클라
+            skillBox = Instantiate(SkillSet[0].skillPrefab, rightFingerTr[0].position, Quaternion.LookRotation(hit.point - rightFingerTr[1].position));//포톤뷰 호스트 ->클라
 
 
             Rigidbody skillRigidbody = skillBox.GetComponent<Rigidbody>();
@@ -395,7 +408,7 @@ public class SkillsManager : MonoBehaviour
         //if (isKeydownSkill != null) yield break; //재동작하는걸 막음(스킬런치가 이미 막고있음)
         float _t = 0;
         RaycastHit hit = crosshairray.hit;
-        skillBox = Instantiate(SkillSet[1], rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
+        skillBox = Instantiate(SkillSet[0].skillPrefab, rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
         skillBox.transform.SetParent(rightFingerTr[2]);
         while (_t < time_holding)
         {
@@ -428,7 +441,7 @@ public class SkillsManager : MonoBehaviour
         {
             RaycastHit hit = crosshairray.hit;
             _t += Time.deltaTime;
-            skillBox = Instantiate(SkillSet[1], hit.point, Quaternion.identity);
+            skillBox = Instantiate(SkillSet[1].skillPrefab, hit.point, Quaternion.identity);
             Destroy(skillBox, 1f);
             yield return new WaitForSeconds(time_step);
             if (keydownCount < 2)
@@ -453,7 +466,7 @@ public class SkillsManager : MonoBehaviour
     private IEnumerator EleMake()
     {
         float _t = 0;
-        skillBox = Instantiate(SkillSet[1], player.transform.position, Quaternion.identity);
+        skillBox = Instantiate(SkillSet[1].skillPrefab, player.transform.position, Quaternion.identity);
         skillBox.transform.SetParent(player.transform);
         while (_t < time_holding) //5초간 지속
         {
@@ -484,7 +497,7 @@ public class SkillsManager : MonoBehaviour
     {
         float _t = 0;
         print("바람2");
-        skillBox = Instantiate(SkillSet[1], rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
+        skillBox = Instantiate(SkillSet[1].skillPrefab, rightFingerTr[2].position, Quaternion.LookRotation(rightFingerTr[1].right));
         skillBox.transform.SetParent(rightFingerTr[2]);
         while (_t < time_holding) //5초간 지속
         {
@@ -517,7 +530,7 @@ public class SkillsManager : MonoBehaviour
         bool righttransform = true;
         if (cool && righttransform && skillLaunched == false)
         {
-            skillBox = Instantiate(SkillSet[2], Vector3.Lerp(rightFingerTr[1].position, rightFingerTr[2].position, 0.5f), Quaternion.identity);
+            skillBox = Instantiate(SkillSet[2].skillPrefab, Vector3.Lerp(rightFingerTr[1].position, rightFingerTr[2].position, 0.5f), Quaternion.identity);
             skillBox.transform.SetParent(rightFingerTr[1]);
             skillLaunched = true;
             PreSkillLaunched = true;
@@ -587,7 +600,7 @@ public class SkillsManager : MonoBehaviour
             (leftFingerTr[0].position - rightFingerTr[0].position).magnitude >= preshowDis)
         {
             skillLaunched = true;
-            skillBox = Instantiate(SkillSet[0], Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position, 0.5f), Quaternion.identity);
+            skillBox = Instantiate(SkillSet[0].skillPrefab, Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position, 0.5f), Quaternion.identity);
             StartCoroutine(Showtime());
         }
     }
@@ -631,7 +644,7 @@ public class SkillsManager : MonoBehaviour
         RaycastHit hit = crosshairray.hit;
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], player.transform.position + (Vector3.up * 10), Quaternion.identity);
+            skillBox = Instantiate(SkillSet[3].skillPrefab, player.transform.position + (Vector3.up * 10), Quaternion.identity);
             skillBox.GetComponent<Rigidbody>().AddForce((hit.point - skillBox.transform.position).normalized * showdownForce);
         }
         makeShowdownkill = false;
@@ -641,7 +654,7 @@ public class SkillsManager : MonoBehaviour
     {
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], player.transform.position, Quaternion.identity);
+            skillBox = Instantiate(SkillSet[3].skillPrefab, player.transform.position, Quaternion.identity);
         }
         makeShowdownkill = false;
         skillLaunched = false;
@@ -651,7 +664,7 @@ public class SkillsManager : MonoBehaviour
         RaycastHit hit = crosshairray.hit;
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], rightFingerTr[0].position, Quaternion.identity);
+            skillBox = Instantiate(SkillSet[3].skillPrefab, rightFingerTr[0].position, Quaternion.identity);
             skillBox.transform.rotation = Quaternion.Euler(-90, 0, -45);
             StartCoroutine(Showdown_EleEffect());
         }
@@ -674,7 +687,7 @@ public class SkillsManager : MonoBehaviour
     {
         if (makeShowdownkill)
         {
-            skillBox = Instantiate(SkillSet[3], Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position,0.5f) + player.transform.forward, Quaternion.identity);
+            skillBox = Instantiate(SkillSet[3].skillPrefab, Vector3.Lerp(leftFingerTr[0].position, rightFingerTr[0].position,0.5f) + player.transform.forward, Quaternion.identity);
             StartCoroutine(Showdown_WindEffect());
         }
         makeShowdownkill = false;

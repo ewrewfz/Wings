@@ -3,7 +3,10 @@ using UnityEngine;
 public interface ISpecialEffect
 {
     void ApplyEffect();
-    void ChangeValue(float _duration, float _damage);
+    void ChangeValue(float _duration, float _value);
+
+    float ReturnDuration();
+    float ReturnValue();
 }
 
 public class SkillSpecialEffect : MonoBehaviour
@@ -28,6 +31,14 @@ public class SkillSpecialEffect : MonoBehaviour
             burnDuration = _duration;
             burnDamage = _damage;
         }
+        public float ReturnDuration()
+        {
+            return burnDuration;
+        }
+        public float ReturnValue()
+        {
+            return burnDamage;
+        }
     }
 
     public class IceEffect : ISpecialEffect
@@ -49,6 +60,14 @@ public class SkillSpecialEffect : MonoBehaviour
         {
             addDuration = _duration;
             addCool = _addCool;
+        }
+        public float ReturnDuration()
+        {
+            return addDuration;
+        }
+        public float ReturnValue()
+        {
+            return addCool;
         }
     }
 
@@ -72,7 +91,14 @@ public class SkillSpecialEffect : MonoBehaviour
             substractDuration = _substractDuration;
             substractCool = _substractCool;
         }
-
+        public float ReturnDuration()
+        {
+            return substractDuration;
+        }
+        public float ReturnValue()
+        {
+            return substractCool;
+        }
     }
 
     public class WindEffect : ISpecialEffect
@@ -94,6 +120,14 @@ public class SkillSpecialEffect : MonoBehaviour
         {
             burnDuration = _duration;
             manaburn = _manaburn;
+        }
+        public float ReturnDuration()
+        {
+            return burnDuration;
+        }
+        public float ReturnValue()
+        {
+            return manaburn;
         }
     }
 }

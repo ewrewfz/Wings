@@ -9865,6 +9865,7 @@ GameObject:
   - component: {fileID: 1723270880679331726}
   - component: {fileID: 7399568840032528294}
   - component: {fileID: 5457564176649854417}
+  - component: {fileID: -9031475275706437492}
   m_Layer: 2
   m_Name: Fx_fire_single
   m_TagString: Untagged
@@ -14802,6 +14803,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-9031475275706437492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687270235789793220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620472e6747a6254d9d492eb346bb5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  property: 0
+  type: 0
+  damage: 0
+  duration: 0
+  value: 0
 --- !u!1 &6988489114131633791
 GameObject:
   m_ObjectHideFlags: 0

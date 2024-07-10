@@ -4910,6 +4910,7 @@ GameObject:
   - component: {fileID: 6663285243583567723}
   - component: {fileID: -7869695883901974054}
   - component: {fileID: 8843616851147813644}
+  - component: {fileID: 3293198107160703090}
   m_Layer: 2
   m_Name: fx_ice_single
   m_TagString: Untagged
@@ -9848,6 +9849,23 @@ CapsuleCollider:
   m_Height: 1.1467056
   m_Direction: 2
   m_Center: {x: 0, y: 0.004817188, z: -0.021872997}
+--- !u!114 &3293198107160703090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732017278556919038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620472e6747a6254d9d492eb346bb5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  property: 0
+  type: 0
+  damage: 0
+  duration: 0
+  value: 0
 --- !u!1 &6568397361328675569
 GameObject:
   m_ObjectHideFlags: 0
